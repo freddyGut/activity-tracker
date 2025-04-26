@@ -1,0 +1,3 @@
+C:/Users/Jonathan/CLionProjects/ActivityTracker/cmake-build-debug/CMakeFiles/ActivityTracker.dir
+C:/Users/Jonathan/CLionProjects/ActivityTracker/cmake-build-debug/CMakeFiles/edit_cache.dir
+C:/Users/Jonathan/CLionProjects/ActivityTracker/cmake-build-debug/CMakeFiles/rebuild_cache.dir

@@ -1,0 +1,3 @@
+"C:\Program Files\JetBrains\CLion 2024.2.3\bin\cmake\win\x64\bin\cmake.exe" -E rm -f CMakeFiles\ActivityTracker.dir/objects.a
+C:\TDM-GCC-64\bin\ar.exe qc CMakeFiles\ActivityTracker.dir/objects.a @CMakeFiles\ActivityTracker.dir\objects1.rsp
+C:\TDM-GCC-64\bin\g++.exe -g -Wl,--whole-archive CMakeFiles\ActivityTracker.dir/objects.a -Wl,--no-whole-archive -o ActivityTracker.exe -Wl,--out-implib,libActivityTracker.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\ActivityTracker.dir\linkLibs.rsp
