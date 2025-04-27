@@ -128,6 +128,30 @@ ActivityTracker/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\ActivityTracker.dir\build.make CMakeFiles/ActivityTracker.dir/build
 .PHONY : ActivityTracker/fast
 
+MainFrame.obj: MainFrame.cpp.obj
+.PHONY : MainFrame.obj
+
+# target to build an object file
+MainFrame.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\ActivityTracker.dir\build.make CMakeFiles/ActivityTracker.dir/MainFrame.cpp.obj
+.PHONY : MainFrame.cpp.obj
+
+MainFrame.i: MainFrame.cpp.i
+.PHONY : MainFrame.i
+
+# target to preprocess a source file
+MainFrame.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\ActivityTracker.dir\build.make CMakeFiles/ActivityTracker.dir/MainFrame.cpp.i
+.PHONY : MainFrame.cpp.i
+
+MainFrame.s: MainFrame.cpp.s
+.PHONY : MainFrame.s
+
+# target to generate assembly for a file
+MainFrame.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\ActivityTracker.dir\build.make CMakeFiles/ActivityTracker.dir/MainFrame.cpp.s
+.PHONY : MainFrame.cpp.s
+
 main.obj: main.cpp.obj
 .PHONY : main.obj
 
@@ -161,6 +185,9 @@ help:
 	@echo ... edit_cache
 	@echo ... rebuild_cache
 	@echo ... ActivityTracker
+	@echo ... MainFrame.obj
+	@echo ... MainFrame.i
+	@echo ... MainFrame.s
 	@echo ... main.obj
 	@echo ... main.i
 	@echo ... main.s

@@ -10,5 +10,7 @@ set(wxWidgets_USE_STATIC ON)
 find_package(wxWidgets REQUIRED net gl core base xrc adv)
 include(${wxWidgets_USE_FILE})
 
-add_executable(ActivityTracker main.cpp)
+add_executable(ActivityTracker main.cpp
+        MainFrame.cpp
+        MainFrame.h)
 target_link_libraries(${PROJECT_NAME} ${wxWidgets_LIBRARIES})
