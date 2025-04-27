@@ -8,6 +8,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
+  "C:/Users/Jonathan/CLionProjects/ActivityTracker/Activity.cpp" "CMakeFiles/ActivityTracker.dir/Activity.cpp.obj" "gcc" "CMakeFiles/ActivityTracker.dir/Activity.cpp.obj.d"
   "C:/Users/Jonathan/CLionProjects/ActivityTracker/MainFrame.cpp" "CMakeFiles/ActivityTracker.dir/MainFrame.cpp.obj" "gcc" "CMakeFiles/ActivityTracker.dir/MainFrame.cpp.obj.d"
   "C:/Users/Jonathan/CLionProjects/ActivityTracker/main.cpp" "CMakeFiles/ActivityTracker.dir/main.cpp.obj" "gcc" "CMakeFiles/ActivityTracker.dir/main.cpp.obj.d"
   )
