@@ -6,6 +6,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/ActivityTracker.dir/Activity.cpp.obj.d"
   "CMakeFiles/ActivityTracker.dir/MainFrame.cpp.obj"
   "CMakeFiles/ActivityTracker.dir/MainFrame.cpp.obj.d"
+  "CMakeFiles/ActivityTracker.dir/Register.cpp.obj"
+  "CMakeFiles/ActivityTracker.dir/Register.cpp.obj.d"
   "CMakeFiles/ActivityTracker.dir/main.cpp.obj"
   "CMakeFiles/ActivityTracker.dir/main.cpp.obj.d"
   "libActivityTracker.dll.a"

@@ -176,6 +176,30 @@ MainFrame.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\ActivityTracker.dir\build.make CMakeFiles/ActivityTracker.dir/MainFrame.cpp.s
 .PHONY : MainFrame.cpp.s
 
+Register.obj: Register.cpp.obj
+.PHONY : Register.obj
+
+# target to build an object file
+Register.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\ActivityTracker.dir\build.make CMakeFiles/ActivityTracker.dir/Register.cpp.obj
+.PHONY : Register.cpp.obj
+
+Register.i: Register.cpp.i
+.PHONY : Register.i
+
+# target to preprocess a source file
+Register.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\ActivityTracker.dir\build.make CMakeFiles/ActivityTracker.dir/Register.cpp.i
+.PHONY : Register.cpp.i
+
+Register.s: Register.cpp.s
+.PHONY : Register.s
+
+# target to generate assembly for a file
+Register.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\ActivityTracker.dir\build.make CMakeFiles/ActivityTracker.dir/Register.cpp.s
+.PHONY : Register.cpp.s
+
 main.obj: main.cpp.obj
 .PHONY : main.obj
 
@@ -215,6 +239,9 @@ help:
 	@echo ... MainFrame.obj
 	@echo ... MainFrame.i
 	@echo ... MainFrame.s
+	@echo ... Register.obj
+	@echo ... Register.i
+	@echo ... Register.s
 	@echo ... main.obj
 	@echo ... main.i
 	@echo ... main.s

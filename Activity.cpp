@@ -1,9 +1,10 @@
-//
-// Created by Jonathan on 27/04/2025.
-//
 
 #include "Activity.h"
 
+Activity::Activity(const std::string &description, wxDateTime &startTime, wxDateTime &endTime)
+    : description(description), startTime(startTime), endTime(endTime) { }
+
+// === GETTERS ===
 std::string Activity::getDescription() const {
       return description;
   }
@@ -15,6 +16,7 @@ wxDateTime Activity::getEndTime() const {
   }
 
 
+// === SETTERS ===
 void Activity::setDescription(const std::string& description) {
       this->description = description;
   }

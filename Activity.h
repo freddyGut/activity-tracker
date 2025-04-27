@@ -1,6 +1,3 @@
-//
-// Created by Jonathan on 27/04/2025.
-//
 
 #ifndef ACTIVITY_H
 #define ACTIVITY_H
