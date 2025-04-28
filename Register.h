@@ -11,14 +11,14 @@
 class Register {
 
 public:
-    Register();
+    Register() = default;
 
-    void AddActivity(const wxDateTime& day, const Activity& activity);
+    void AddActivity(const wxDateTime day, const Activity& activity);
     void RemoveActivity(const wxDateTime& day, const Activity& activity);
-    std::vector<Activity> GetActivitiesPerDate(const wxDateTime& day) const;
+    std::vector<Activity> GetActivitiesPerDate(const wxDateTime& day);
 
 private:
-    std::map<wxDateTime, std::vector<Activity>>* registerMap;
+    std::map<wxDateTime, std::vector<Activity>> registerMap;
 
 };
 

@@ -8,6 +8,7 @@ class Activity {
 
 public:
   Activity (const std::string& description, wxDateTime& startTime, wxDateTime& endTime);
+  Activity();
 
   // Getters
   std::string getDescription() const;
@@ -18,6 +19,11 @@ public:
   void setDescription(const std::string& description);
   void setStartTime(const wxDateTime& startTime);
   void setEndTime(const wxDateTime& endTime);
+
+  std::string getFormattedStartTime() const;
+  std::string getFormattedEndTime() const;
+
+  bool operator<(const Activity& other) const;
 
 
 private:

@@ -561,4 +561,30 @@ CMakeFiles/ActivityTracker.dir/MainFrame.cpp.obj: \
  C:\Users\Jonathan\CLionProjects\ActivityTracker\MainFrame.h \
  C:/Users/Jonathan/Desktop/wxWidgets_3.0.5/include/wx/calctrl.h \
  C:/Users/Jonathan/Desktop/wxWidgets_3.0.5/include/wx/dateevt.h \
- C:/Users/Jonathan/Desktop/wxWidgets_3.0.5/include/wx/msw/calctrl.h
+ C:/Users/Jonathan/Desktop/wxWidgets_3.0.5/include/wx/msw/calctrl.h \
+ C:\Users\Jonathan\CLionProjects\ActivityTracker\Activity.h \
+ C:\Users\Jonathan\CLionProjects\ActivityTracker\Register.h \
+ C:/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/5.1.0/include/c++/vector \
+ C:/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/5.1.0/include/c++/bits/stl_construct.h \
+ C:/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/5.1.0/include/c++/bits/stl_uninitialized.h \
+ C:/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/5.1.0/include/c++/bits/stl_vector.h \
+ C:/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/5.1.0/include/c++/bits/stl_bvector.h \
+ C:/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/5.1.0/include/c++/bits/vector.tcc \
+ C:/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/5.1.0/include/c++/map \
+ C:/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/5.1.0/include/c++/bits/stl_tree.h \
+ C:/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/5.1.0/include/c++/ext/aligned_buffer.h \
+ C:/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/5.1.0/include/c++/bits/stl_map.h \
+ C:/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/5.1.0/include/c++/tuple \
+ C:/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/5.1.0/include/c++/utility \
+ C:/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/5.1.0/include/c++/bits/stl_relops.h \
+ C:/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/5.1.0/include/c++/array \
+ C:/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/5.1.0/include/c++/bits/uses_allocator.h \
+ C:/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/5.1.0/include/c++/bits/stl_multimap.h \
+ C:\Users\Jonathan\CLionProjects\ActivityTracker\AddActivityDialog.h \
+ C:/Users/Jonathan/Desktop/wxWidgets_3.0.5/include/wx/spinctrl.h \
+ C:/Users/Jonathan/Desktop/wxWidgets_3.0.5/include/wx/spinbutt.h \
+ C:/Users/Jonathan/Desktop/wxWidgets_3.0.5/include/wx/range.h \
+ C:/Users/Jonathan/Desktop/wxWidgets_3.0.5/include/wx/msw/spinbutt.h \
+ C:/Users/Jonathan/Desktop/wxWidgets_3.0.5/include/wx/msw/spinctrl.h \
+ C:/Users/Jonathan/Desktop/wxWidgets_3.0.5/include/wx/generic/spinctlg.h \
+ C:/Users/Jonathan/Desktop/wxWidgets_3.0.5/include/wx/compositewin.h

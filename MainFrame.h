@@ -8,6 +8,8 @@
 #include <wx/msw/listbox.h>
 #include <wx/calctrl.h>
 
+#include "Activity.h"
+#include "Register.h"
 
 class MainFrame : public wxFrame {
 
@@ -17,6 +19,9 @@ public:
 
 
 private:
+
+    Register _register;
+
     // === GRAPHICAL COMPONENTS ===
     wxCalendarCtrl* calendar;      // Calendar to select the days
     wxListBox* activityList;        // List of activities in the selected date
@@ -30,7 +35,7 @@ private:
 
 
     // === HELPER ===
-    void UpdateActivityListForSelectedDate();
+    void UpdateActivityList(const wxDateTime& selectedDate);
 
 
     // === ID ===
@@ -40,9 +45,6 @@ private:
         ID_AddActivity,
         ID_RemoveActivity
     };
-
-    // tells the compiler: "Look, this class is going to use an event table to map IDs to C++ functions"
-    wxDECLARE_EVENT_TABLE();
 
 };
 

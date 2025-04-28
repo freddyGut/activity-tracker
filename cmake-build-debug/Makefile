@@ -152,6 +152,30 @@ Activity.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\ActivityTracker.dir\build.make CMakeFiles/ActivityTracker.dir/Activity.cpp.s
 .PHONY : Activity.cpp.s
 
+AddActivityDialog.obj: AddActivityDialog.cpp.obj
+.PHONY : AddActivityDialog.obj
+
+# target to build an object file
+AddActivityDialog.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\ActivityTracker.dir\build.make CMakeFiles/ActivityTracker.dir/AddActivityDialog.cpp.obj
+.PHONY : AddActivityDialog.cpp.obj
+
+AddActivityDialog.i: AddActivityDialog.cpp.i
+.PHONY : AddActivityDialog.i
+
+# target to preprocess a source file
+AddActivityDialog.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\ActivityTracker.dir\build.make CMakeFiles/ActivityTracker.dir/AddActivityDialog.cpp.i
+.PHONY : AddActivityDialog.cpp.i
+
+AddActivityDialog.s: AddActivityDialog.cpp.s
+.PHONY : AddActivityDialog.s
+
+# target to generate assembly for a file
+AddActivityDialog.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\ActivityTracker.dir\build.make CMakeFiles/ActivityTracker.dir/AddActivityDialog.cpp.s
+.PHONY : AddActivityDialog.cpp.s
+
 MainFrame.obj: MainFrame.cpp.obj
 .PHONY : MainFrame.obj
 
@@ -236,6 +260,9 @@ help:
 	@echo ... Activity.obj
 	@echo ... Activity.i
 	@echo ... Activity.s
+	@echo ... AddActivityDialog.obj
+	@echo ... AddActivityDialog.i
+	@echo ... AddActivityDialog.s
 	@echo ... MainFrame.obj
 	@echo ... MainFrame.i
 	@echo ... MainFrame.s

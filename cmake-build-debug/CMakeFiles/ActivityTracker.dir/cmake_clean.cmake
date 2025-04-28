@@ -4,6 +4,8 @@ file(REMOVE_RECURSE
   "ActivityTracker.pdb"
   "CMakeFiles/ActivityTracker.dir/Activity.cpp.obj"
   "CMakeFiles/ActivityTracker.dir/Activity.cpp.obj.d"
+  "CMakeFiles/ActivityTracker.dir/AddActivityDialog.cpp.obj"
+  "CMakeFiles/ActivityTracker.dir/AddActivityDialog.cpp.obj.d"
   "CMakeFiles/ActivityTracker.dir/MainFrame.cpp.obj"
   "CMakeFiles/ActivityTracker.dir/MainFrame.cpp.obj.d"
   "CMakeFiles/ActivityTracker.dir/Register.cpp.obj"

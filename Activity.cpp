@@ -4,6 +4,9 @@
 Activity::Activity(const std::string &description, wxDateTime &startTime, wxDateTime &endTime)
     : description(description), startTime(startTime), endTime(endTime) { }
 
+Activity::Activity() : description(" "), startTime(wxDateTime::Now()), endTime(wxDateTime::Now()){ }
+
+
 // === GETTERS ===
 std::string Activity::getDescription() const {
       return description;
@@ -26,3 +29,19 @@ void Activity::setStartTime(const wxDateTime& startTime) {
 void Activity::setEndTime(const wxDateTime& endTime) {
       this->endTime = endTime;
   }
+
+
+std::string Activity::getFormattedStartTime() const
+{
+    return startTime.Format("%H:%M").ToStdString();
+}
+
+std::string Activity::getFormattedEndTime() const
+{
+    return endTime.Format("%H:%M").ToStdString();
+}
+
+bool Activity::operator<(const Activity& other) const
+{
+    return startTime.IsEarlierThan(other.startTime);
+}

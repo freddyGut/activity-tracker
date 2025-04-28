@@ -16,5 +16,7 @@ add_executable(ActivityTracker main.cpp
         Activity.cpp
         Activity.h
         Register.cpp
-        Register.h)
+        Register.h
+        AddActivityDialog.cpp
+        AddActivityDialog.h)
 target_link_libraries(${PROJECT_NAME} ${wxWidgets_LIBRARIES})
