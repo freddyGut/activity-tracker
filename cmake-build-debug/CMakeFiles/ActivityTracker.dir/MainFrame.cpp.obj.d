@@ -558,10 +558,11 @@ CMakeFiles/ActivityTracker.dir/MainFrame.cpp.obj: \
  C:/Users/Jonathan/Desktop/wxWidgets_3.0.5/include/wx/msw/filedlg.h \
  C:/Users/Jonathan/Desktop/wxWidgets_3.0.5/include/wx/mdi.h \
  C:/Users/Jonathan/Desktop/wxWidgets_3.0.5/include/wx/msw/mdi.h \
- C:\Users\Jonathan\CLionProjects\ActivityTracker\MainFrame.h \
  C:/Users/Jonathan/Desktop/wxWidgets_3.0.5/include/wx/calctrl.h \
  C:/Users/Jonathan/Desktop/wxWidgets_3.0.5/include/wx/dateevt.h \
  C:/Users/Jonathan/Desktop/wxWidgets_3.0.5/include/wx/msw/calctrl.h \
+ C:\Users\Jonathan\CLionProjects\ActivityTracker\MainFrame.h \
+ C:/Users/Jonathan/Desktop/wxWidgets_3.0.5/include/wx/generic/calctrlg.h \
  C:\Users\Jonathan\CLionProjects\ActivityTracker\Activity.h \
  C:\Users\Jonathan\CLionProjects\ActivityTracker\Register.h \
  C:/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/5.1.0/include/c++/vector \

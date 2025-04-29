@@ -1,6 +1,8 @@
 #include <wx/wx.h>
 #include <wx/event.h>
 #include <wx/msw/button.h>
+#include <wx/calctrl.h> // events and costructors for calendars
+
 
 #include "MainFrame.h"
 #include "Register.h"
@@ -11,33 +13,56 @@
 
 
 // === Constructor ===
-MainFrame::MainFrame(const wxString& title): wxFrame(nullptr, wxID_ANY, title, wxDefaultPosition, wxSize(600, 400))
+MainFrame::MainFrame(const wxString& title): wxFrame(nullptr, wxID_ANY, title, wxDefaultPosition, wxSize(8000, 600))
 {
-    // Creating the widgets
-    calendar = new wxCalendarCtrl(this, ID_Calendar, wxDefaultDateTime, wxPoint(20, 20), wxDefaultSize);
-    activityList = new wxListBox(this, wxID_ANY, wxPoint(300, 20), wxSize(250, 250));
-    addActivityButton = new wxButton(this, ID_AddActivity, "Add Activity", wxPoint(300, 300));
-    removeActivityButton = new wxButton(this, ID_RemoveActivity, "Remove Activity", wxPoint(450, 300));
+    // Main sizer: HORIZONTAL
+    wxBoxSizer* mainSizer = new wxBoxSizer(wxHORIZONTAL);
 
-    // Binding widgets to their handlers
-    calendar->Bind(wxEVT_CALENDAR_SEL_CHANGED, &MainFrame::OnDateChanged, this);
-    addActivityButton->Bind(wxEVT_BUTTON, &MainFrame::OnAddActivity, this);
-    removeActivityButton->Bind(wxEVT_BUTTON, &MainFrame::OnRemoveActivity, this);
+    // Bigger calendar
+    calendar = new wxGenericCalendarCtrl(this, ID_Calendar, wxDefaultDateTime, wxDefaultPosition, wxSize(300, 400));
+    wxFont calendarFont(14, wxFONTFAMILY_SWISS, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_BOLD);
+    calendar->SetFont(calendarFont);
+    calendar->SetHeaderColours(*wxWHITE, *wxBLUE);        // Header text
+    calendar->SetHighlightColours(*wxWHITE, *wxRED);      // Selected day
+    calendar->SetHolidayColours(*wxBLUE, *wxWHITE);      // Festivity
 
-    // Creating sizer
-    wxBoxSizer* mainSizer = new wxBoxSizer(wxVERTICAL);
+    // Right sizer: VERTICAL (activities + buttons)
+    wxBoxSizer* rightSizer = new wxBoxSizer(wxVERTICAL);
+
+    activityList = new wxListBox(this, wxID_ANY, wxDefaultPosition, wxSize(300, 400));
+
+    // Buttons
+    addActivityButton = new wxButton(this, ID_AddActivity, "Add Activity");
+    addActivityButton->SetBackgroundColour(wxColour(142, 226, 0));
+    addActivityButton->SetForegroundColour(*wxWHITE);
+    addActivityButton->SetFont(wxFontInfo(10).Bold());
+
+    removeActivityButton = new wxButton(this, ID_RemoveActivity, "Remove Activity");
+    removeActivityButton->SetBackgroundColour(wxColour(208, 8, 37));
+    removeActivityButton->SetForegroundColour(*wxWHITE);
+    removeActivityButton->SetFont(wxFontInfo(10).Bold());
+
+
     wxBoxSizer* buttonSizer = new wxBoxSizer(wxHORIZONTAL);
     buttonSizer->Add(addActivityButton, 0, wxALL, 5);
     buttonSizer->Add(removeActivityButton, 0, wxALL, 5);
 
-    // Populating sizer
-    mainSizer->Add(calendar, 0, wxEXPAND | wxALL, 5);
-    mainSizer->Add(activityList, 0, wxEXPAND | wxLEFT | wxRIGHT, 5);
-    mainSizer->Add(buttonSizer, 0, wxALIGN_CENTER | wxBOTTOM, 10);
+    // Building the right size
+    rightSizer->Add(activityList, 0, wxEXPAND | wxALL, 5);
+    rightSizer->Add(buttonSizer, 0, wxALIGN_CENTER | wxBOTTOM, 10);
+
+    // Putting the calendar on the left and rightSizer on the right
+    mainSizer->Add(calendar, 1, wxALL, 10);
+    mainSizer->Add(rightSizer, 1, wxEXPAND | wxALL, 10);
 
     SetSizerAndFit(mainSizer);
-    _register = Register();
 
+    // Binding
+    calendar->Bind(wxEVT_CALENDAR_SEL_CHANGED, &MainFrame::OnDateChanged, this);
+    addActivityButton->Bind(wxEVT_BUTTON, &MainFrame::OnAddActivity, this);
+    removeActivityButton->Bind(wxEVT_BUTTON, &MainFrame::OnRemoveActivity, this);
+
+    _register = Register();
     UpdateActivityList(calendar->GetDate());
 
 }

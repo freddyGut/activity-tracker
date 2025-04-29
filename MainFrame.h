@@ -2,11 +2,12 @@
 #ifndef MAINFRAME_H
 #define MAINFRAME_H
 #include <wx/event.h>
-#include <wx/string.h>
 #include <wx/msw/button.h>
 #include <wx/msw/frame.h>
 #include <wx/msw/listbox.h>
-#include <wx/calctrl.h>
+#include <wx/calctrl.h> // Base class wxCalendarCtrlBase
+#include <wx/generic/calctrlg.h> // wxGenericCalendarCtrl
+
 
 #include "Activity.h"
 #include "Register.h"
@@ -23,7 +24,7 @@ private:
     Register _register;
 
     // === GRAPHICAL COMPONENTS ===
-    wxCalendarCtrl* calendar;      // Calendar to select the days
+    wxGenericCalendarCtrl* calendar;      // Calendar to select the days
     wxListBox* activityList;        // List of activities in the selected date
     wxButton* addActivityButton;    // Button to add a new activity
     wxButton* removeActivityButton; // Button to remove an activity

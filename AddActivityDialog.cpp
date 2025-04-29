@@ -3,7 +3,7 @@
 
 
 AddActivityDialog::AddActivityDialog(wxWindow* parent)
-    : wxDialog(parent, wxID_ANY, "Add activity", wxDefaultPosition, wxSize(300, 300))
+    : wxDialog(parent, wxID_ANY, "Add activity", wxDefaultPosition, wxSize(500, 500))
 {
     wxBoxSizer* mainSizer = new wxBoxSizer(wxVERTICAL);
 

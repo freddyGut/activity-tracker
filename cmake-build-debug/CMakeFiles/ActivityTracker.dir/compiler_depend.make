@@ -1119,6 +1119,7 @@ CMakeFiles/ActivityTracker.dir/MainFrame.cpp.obj: C:/Users/Jonathan/CLionProject
   C:/Users/Jonathan/Desktop/wxWidgets_3.0.5/include/wx/gauge.h \
   C:/Users/Jonathan/Desktop/wxWidgets_3.0.5/include/wx/gdicmn.h \
   C:/Users/Jonathan/Desktop/wxWidgets_3.0.5/include/wx/gdiobj.h \
+  C:/Users/Jonathan/Desktop/wxWidgets_3.0.5/include/wx/generic/calctrlg.h \
   C:/Users/Jonathan/Desktop/wxWidgets_3.0.5/include/wx/generic/choicdgg.h \
   C:/Users/Jonathan/Desktop/wxWidgets_3.0.5/include/wx/generic/logg.h \
   C:/Users/Jonathan/Desktop/wxWidgets_3.0.5/include/wx/generic/msgdlgg.h \
@@ -1968,6 +1969,7 @@ CMakeFiles/ActivityTracker.dir/main.cpp.obj: C:/Users/Jonathan/CLionProjects/Act
   C:/Users/Jonathan/Desktop/wxWidgets_3.0.5/include/wx/gauge.h \
   C:/Users/Jonathan/Desktop/wxWidgets_3.0.5/include/wx/gdicmn.h \
   C:/Users/Jonathan/Desktop/wxWidgets_3.0.5/include/wx/gdiobj.h \
+  C:/Users/Jonathan/Desktop/wxWidgets_3.0.5/include/wx/generic/calctrlg.h \
   C:/Users/Jonathan/Desktop/wxWidgets_3.0.5/include/wx/generic/choicdgg.h \
   C:/Users/Jonathan/Desktop/wxWidgets_3.0.5/include/wx/generic/logg.h \
   C:/Users/Jonathan/Desktop/wxWidgets_3.0.5/include/wx/generic/msgdlgg.h \
@@ -3322,6 +3324,8 @@ C:/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/5.1.0/include/c++/bits/vector.tcc:
 C:/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/5.1.0/include/c++/tuple:
 
 C:/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/5.1.0/include/c++/utility:
+
+C:/Users/Jonathan/Desktop/wxWidgets_3.0.5/include/wx/generic/calctrlg.h:
 
 C:/Users/Jonathan/Desktop/wxWidgets_3.0.5/include/wx/msw/calctrl.h:
 
