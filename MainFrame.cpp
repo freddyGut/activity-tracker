@@ -14,7 +14,7 @@
 
 
 // === Constructor ===
-MainFrame::MainFrame(const wxString& title): wxFrame(nullptr, wxID_ANY, title, wxDefaultPosition, wxSize(8000, 600))
+MainFrame::MainFrame(const wxString& title): wxFrame(nullptr, wxID_ANY, title, wxPoint(200,200), wxSize(8000, 600))
 {
     SetBackgroundColour(wxColour(0, 116, 166));
 
