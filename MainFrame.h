@@ -2,6 +2,7 @@
 #ifndef MAINFRAME_H
 #define MAINFRAME_H
 #include <wx/event.h>
+#include <wx/listctrl.h>
 #include <wx/msw/button.h>
 #include <wx/msw/frame.h>
 #include <wx/msw/listbox.h>
@@ -25,7 +26,7 @@ private:
 
     // === GRAPHICAL COMPONENTS ===
     wxGenericCalendarCtrl* calendar;      // Calendar to select the days
-    wxListBox* activityList;        // List of activities in the selected date
+    wxListCtrl* activityList;        // List of activities in the selected date
     wxButton* addActivityButton;    // Button to add a new activity
     wxButton* removeActivityButton; // Button to remove an activity
 

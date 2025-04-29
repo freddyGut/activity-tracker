@@ -11,10 +11,7 @@ void Register::AddActivity(const wxDateTime day, const Activity &activity) {
     wxDateTime normalizedDate = day;
     normalizedDate.ResetTime(); //resets time to 00:00:00, so the key is the same for all activities in the same date
 
-
-    // pointer to the vector associated to a day
     registerMap[normalizedDate].push_back(activity);
-    wxLogError("SAVED activity to register...");
 
 }
 

@@ -10,7 +10,7 @@ public:
 
 bool MyApp::OnInit() {
 
-    auto* mainFrame = new MainFrame("Activity Tracker");
+    auto* mainFrame = new MainFrame("ACTIVITY TRACKER");
     mainFrame->Show(true);
     return true;
 }

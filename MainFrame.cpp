@@ -1,6 +1,7 @@
 #include <wx/wx.h>
 #include <wx/event.h>
 #include <wx/msw/button.h>
+#include <wx/listctrl.h>
 #include <wx/calctrl.h> // events and costructors for calendars
 
 
@@ -15,32 +16,39 @@
 // === Constructor ===
 MainFrame::MainFrame(const wxString& title): wxFrame(nullptr, wxID_ANY, title, wxDefaultPosition, wxSize(8000, 600))
 {
+    SetBackgroundColour(wxColour(0, 116, 166));
+
     // Main sizer: HORIZONTAL
     wxBoxSizer* mainSizer = new wxBoxSizer(wxHORIZONTAL);
 
     // Bigger calendar
     calendar = new wxGenericCalendarCtrl(this, ID_Calendar, wxDefaultDateTime, wxDefaultPosition, wxSize(300, 400));
-    wxFont calendarFont(14, wxFONTFAMILY_SWISS, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_BOLD);
+    wxFont calendarFont(14, wxFONTFAMILY_ROMAN, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_BOLD, false, "Rockwell");
     calendar->SetFont(calendarFont);
-    calendar->SetHeaderColours(*wxWHITE, *wxBLUE);        // Header text
+    calendar->SetHeaderColours(*wxWHITE, wxColour(0, 65, 112));        // Header text
     calendar->SetHighlightColours(*wxWHITE, *wxRED);      // Selected day
     calendar->SetHolidayColours(*wxBLUE, *wxWHITE);      // Festivity
 
     // Right sizer: VERTICAL (activities + buttons)
     wxBoxSizer* rightSizer = new wxBoxSizer(wxVERTICAL);
 
-    activityList = new wxListBox(this, wxID_ANY, wxDefaultPosition, wxSize(300, 400));
+    activityList = new wxListCtrl(this, wxID_ANY, wxDefaultPosition, wxSize(350, 400), wxLC_REPORT | wxBORDER_SUNKEN);
+    wxFont listFont(12, wxFONTFAMILY_ROMAN, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_NORMAL, false, "Rockwell");
+    activityList->SetFont(listFont);
+
+    activityList->InsertColumn(0, "Time", wxLIST_FORMAT_LEFT, 120);
+    activityList->InsertColumn(1, "Description",wxLIST_FORMAT_LEFT, 230);
 
     // Buttons
     addActivityButton = new wxButton(this, ID_AddActivity, "Add Activity");
-    addActivityButton->SetBackgroundColour(wxColour(142, 226, 0));
+    addActivityButton->SetBackgroundColour(wxColour(0, 65, 112));
     addActivityButton->SetForegroundColour(*wxWHITE);
-    addActivityButton->SetFont(wxFontInfo(10).Bold());
+    addActivityButton->SetFont(listFont);
 
     removeActivityButton = new wxButton(this, ID_RemoveActivity, "Remove Activity");
     removeActivityButton->SetBackgroundColour(wxColour(208, 8, 37));
     removeActivityButton->SetForegroundColour(*wxWHITE);
-    removeActivityButton->SetFont(wxFontInfo(10).Bold());
+    removeActivityButton->SetFont(listFont);
 
 
     wxBoxSizer* buttonSizer = new wxBoxSizer(wxHORIZONTAL);
@@ -113,13 +121,11 @@ void MainFrame::OnAddActivity(wxCommandEvent& event)
 
         wxDateTime startTime(date.GetDay(), date.GetMonth(), date.GetYear(), startHour, startMinute);
         wxDateTime endTime(date.GetDay(), date.GetMonth(), date.GetYear(), endHour, endMinute);
-        wxLogError("Start time: %d:%d", startHour, startMinute);
 
         // Creating the new activity
         Activity activity(description.ToStdString(), startTime, endTime);
 
         // Saving the activity in the register
-        wxLogError("Saving activity to register...");
         _register.AddActivity(date, activity);
 
 
@@ -135,10 +141,10 @@ void MainFrame::OnAddActivity(wxCommandEvent& event)
 
 void MainFrame::OnRemoveActivity(wxCommandEvent& event)
 {
-    int activityIndex = activityList->GetSelection();
-    if (activityIndex == wxNOT_FOUND)
+    int activityIndex = activityList->GetNextItem(-1, wxLIST_NEXT_ALL, wxLIST_STATE_SELECTED);
+    if (activityIndex == -1)
     {
-        wxMessageBox("Please select an activity to remove!", "Error", wxOK | wxICON_ERROR);
+        wxMessageBox("No activity selected!", "Error", wxOK | wxICON_ERROR);
         return;
     }
 
@@ -166,14 +172,24 @@ void MainFrame::OnRemoveActivity(wxCommandEvent& event)
 // === HELPER === OK
 void MainFrame::UpdateActivityList(const wxDateTime& selectedDate)
 {
-    activityList->Clear();
+    activityList->DeleteAllItems();
 
     std::vector<Activity> activities = _register.GetActivitiesPerDate(selectedDate);
 
+    int index = 0;
     for (const auto& activity : activities)
     {
-        std::string line = activity.getFormattedStartTime() + " - " + activity.getFormattedEndTime() + " " + activity.getDescription();
-        activityList->Append(line);
+        wxString time = activity.getFormattedStartTime() + " - " + activity.getFormattedEndTime();
+        wxString description = activity.getDescription();
+
+        index = activityList->InsertItem(index, time);
+        activityList->SetItem(index, 1, description);
+
+        //alternating colors
+        wxColour rowColor = (index % 2 == 0) ? wxColour(245, 245, 245) : wxColour(230, 230, 255);
+        activityList->SetItemBackgroundColour(index, rowColor);
+
+        ++index;
     }
 }
 
