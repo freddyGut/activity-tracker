@@ -6,5 +6,5 @@ CXX_DEFINES = -DUNICODE -DWXUSINGDLL -D_UNICODE
 
 CXX_INCLUDES = @CMakeFiles/ActivityTracker.dir/includes_CXX.rsp
 
-CXX_FLAGS = -g -std=gnu++11 -fdiagnostics-color=always
+CXX_FLAGS = -std=c++17 -g -std=gnu++14 -fdiagnostics-color=always
 

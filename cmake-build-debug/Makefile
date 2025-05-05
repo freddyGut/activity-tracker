@@ -116,6 +116,19 @@ depend:
 .PHONY : depend
 
 #=============================================================================
+# Target rules for targets named core
+
+# Build rule for target.
+core: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 core
+.PHONY : core
+
+# fast build rule for target.
+core/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\core.dir\build.make CMakeFiles/core.dir/build
+.PHONY : core/fast
+
+#=============================================================================
 # Target rules for targets named ActivityTracker
 
 # Build rule for target.
@@ -128,11 +141,51 @@ ActivityTracker/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\ActivityTracker.dir\build.make CMakeFiles/ActivityTracker.dir/build
 .PHONY : ActivityTracker/fast
 
+#=============================================================================
+# Target rules for targets named runActivityTrackerTest
+
+# Build rule for target.
+runActivityTrackerTest: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 runActivityTrackerTest
+.PHONY : runActivityTrackerTest
+
+# fast build rule for target.
+runActivityTrackerTest/fast:
+	$(MAKE) $(MAKESILENT) -f test\CMakeFiles\runActivityTrackerTest.dir\build.make test/CMakeFiles/runActivityTrackerTest.dir/build
+.PHONY : runActivityTrackerTest/fast
+
+#=============================================================================
+# Target rules for targets named gtest
+
+# Build rule for target.
+gtest: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 gtest
+.PHONY : gtest
+
+# fast build rule for target.
+gtest/fast:
+	$(MAKE) $(MAKESILENT) -f test\lib\googletest\CMakeFiles\gtest.dir\build.make test/lib/googletest/CMakeFiles/gtest.dir/build
+.PHONY : gtest/fast
+
+#=============================================================================
+# Target rules for targets named gtest_main
+
+# Build rule for target.
+gtest_main: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 gtest_main
+.PHONY : gtest_main
+
+# fast build rule for target.
+gtest_main/fast:
+	$(MAKE) $(MAKESILENT) -f test\lib\googletest\CMakeFiles\gtest_main.dir\build.make test/lib/googletest/CMakeFiles/gtest_main.dir/build
+.PHONY : gtest_main/fast
+
 Activity.obj: Activity.cpp.obj
 .PHONY : Activity.obj
 
 # target to build an object file
 Activity.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\core.dir\build.make CMakeFiles/core.dir/Activity.cpp.obj
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\ActivityTracker.dir\build.make CMakeFiles/ActivityTracker.dir/Activity.cpp.obj
 .PHONY : Activity.cpp.obj
 
@@ -141,6 +194,7 @@ Activity.i: Activity.cpp.i
 
 # target to preprocess a source file
 Activity.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\core.dir\build.make CMakeFiles/core.dir/Activity.cpp.i
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\ActivityTracker.dir\build.make CMakeFiles/ActivityTracker.dir/Activity.cpp.i
 .PHONY : Activity.cpp.i
 
@@ -149,6 +203,7 @@ Activity.s: Activity.cpp.s
 
 # target to generate assembly for a file
 Activity.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\core.dir\build.make CMakeFiles/core.dir/Activity.cpp.s
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\ActivityTracker.dir\build.make CMakeFiles/ActivityTracker.dir/Activity.cpp.s
 .PHONY : Activity.cpp.s
 
@@ -157,6 +212,7 @@ AddActivityDialog.obj: AddActivityDialog.cpp.obj
 
 # target to build an object file
 AddActivityDialog.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\core.dir\build.make CMakeFiles/core.dir/AddActivityDialog.cpp.obj
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\ActivityTracker.dir\build.make CMakeFiles/ActivityTracker.dir/AddActivityDialog.cpp.obj
 .PHONY : AddActivityDialog.cpp.obj
 
@@ -165,6 +221,7 @@ AddActivityDialog.i: AddActivityDialog.cpp.i
 
 # target to preprocess a source file
 AddActivityDialog.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\core.dir\build.make CMakeFiles/core.dir/AddActivityDialog.cpp.i
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\ActivityTracker.dir\build.make CMakeFiles/ActivityTracker.dir/AddActivityDialog.cpp.i
 .PHONY : AddActivityDialog.cpp.i
 
@@ -173,6 +230,7 @@ AddActivityDialog.s: AddActivityDialog.cpp.s
 
 # target to generate assembly for a file
 AddActivityDialog.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\core.dir\build.make CMakeFiles/core.dir/AddActivityDialog.cpp.s
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\ActivityTracker.dir\build.make CMakeFiles/ActivityTracker.dir/AddActivityDialog.cpp.s
 .PHONY : AddActivityDialog.cpp.s
 
@@ -181,6 +239,7 @@ MainFrame.obj: MainFrame.cpp.obj
 
 # target to build an object file
 MainFrame.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\core.dir\build.make CMakeFiles/core.dir/MainFrame.cpp.obj
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\ActivityTracker.dir\build.make CMakeFiles/ActivityTracker.dir/MainFrame.cpp.obj
 .PHONY : MainFrame.cpp.obj
 
@@ -189,6 +248,7 @@ MainFrame.i: MainFrame.cpp.i
 
 # target to preprocess a source file
 MainFrame.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\core.dir\build.make CMakeFiles/core.dir/MainFrame.cpp.i
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\ActivityTracker.dir\build.make CMakeFiles/ActivityTracker.dir/MainFrame.cpp.i
 .PHONY : MainFrame.cpp.i
 
@@ -197,6 +257,7 @@ MainFrame.s: MainFrame.cpp.s
 
 # target to generate assembly for a file
 MainFrame.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\core.dir\build.make CMakeFiles/core.dir/MainFrame.cpp.s
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\ActivityTracker.dir\build.make CMakeFiles/ActivityTracker.dir/MainFrame.cpp.s
 .PHONY : MainFrame.cpp.s
 
@@ -205,6 +266,7 @@ Register.obj: Register.cpp.obj
 
 # target to build an object file
 Register.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\core.dir\build.make CMakeFiles/core.dir/Register.cpp.obj
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\ActivityTracker.dir\build.make CMakeFiles/ActivityTracker.dir/Register.cpp.obj
 .PHONY : Register.cpp.obj
 
@@ -213,6 +275,7 @@ Register.i: Register.cpp.i
 
 # target to preprocess a source file
 Register.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\core.dir\build.make CMakeFiles/core.dir/Register.cpp.i
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\ActivityTracker.dir\build.make CMakeFiles/ActivityTracker.dir/Register.cpp.i
 .PHONY : Register.cpp.i
 
@@ -221,6 +284,7 @@ Register.s: Register.cpp.s
 
 # target to generate assembly for a file
 Register.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\core.dir\build.make CMakeFiles/core.dir/Register.cpp.s
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\ActivityTracker.dir\build.make CMakeFiles/ActivityTracker.dir/Register.cpp.s
 .PHONY : Register.cpp.s
 
@@ -229,6 +293,7 @@ main.obj: main.cpp.obj
 
 # target to build an object file
 main.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\core.dir\build.make CMakeFiles/core.dir/main.cpp.obj
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\ActivityTracker.dir\build.make CMakeFiles/ActivityTracker.dir/main.cpp.obj
 .PHONY : main.cpp.obj
 
@@ -237,6 +302,7 @@ main.i: main.cpp.i
 
 # target to preprocess a source file
 main.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\core.dir\build.make CMakeFiles/core.dir/main.cpp.i
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\ActivityTracker.dir\build.make CMakeFiles/ActivityTracker.dir/main.cpp.i
 .PHONY : main.cpp.i
 
@@ -245,6 +311,7 @@ main.s: main.cpp.s
 
 # target to generate assembly for a file
 main.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\core.dir\build.make CMakeFiles/core.dir/main.cpp.s
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\ActivityTracker.dir\build.make CMakeFiles/ActivityTracker.dir/main.cpp.s
 .PHONY : main.cpp.s
 
@@ -257,6 +324,10 @@ help:
 	@echo ... edit_cache
 	@echo ... rebuild_cache
 	@echo ... ActivityTracker
+	@echo ... core
+	@echo ... gtest
+	@echo ... gtest_main
+	@echo ... runActivityTrackerTest
 	@echo ... Activity.obj
 	@echo ... Activity.i
 	@echo ... Activity.s

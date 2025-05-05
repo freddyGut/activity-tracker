@@ -1,3 +1,11 @@
+C:/Users/Jonathan/CLionProjects/ActivityTracker/cmake-build-debug/CMakeFiles/core.dir
 C:/Users/Jonathan/CLionProjects/ActivityTracker/cmake-build-debug/CMakeFiles/ActivityTracker.dir
 C:/Users/Jonathan/CLionProjects/ActivityTracker/cmake-build-debug/CMakeFiles/edit_cache.dir
 C:/Users/Jonathan/CLionProjects/ActivityTracker/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+C:/Users/Jonathan/CLionProjects/ActivityTracker/cmake-build-debug/test/CMakeFiles/runActivityTrackerTest.dir
+C:/Users/Jonathan/CLionProjects/ActivityTracker/cmake-build-debug/test/CMakeFiles/edit_cache.dir
+C:/Users/Jonathan/CLionProjects/ActivityTracker/cmake-build-debug/test/CMakeFiles/rebuild_cache.dir
+C:/Users/Jonathan/CLionProjects/ActivityTracker/cmake-build-debug/test/lib/googletest/CMakeFiles/gtest.dir
+C:/Users/Jonathan/CLionProjects/ActivityTracker/cmake-build-debug/test/lib/googletest/CMakeFiles/gtest_main.dir
+C:/Users/Jonathan/CLionProjects/ActivityTracker/cmake-build-debug/test/lib/googletest/CMakeFiles/edit_cache.dir
+C:/Users/Jonathan/CLionProjects/ActivityTracker/cmake-build-debug/test/lib/googletest/CMakeFiles/rebuild_cache.dir

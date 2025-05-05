@@ -1,6 +1,5 @@
 CMakeFiles/ActivityTracker.dir/Activity.cpp.obj: \
  C:\Users\Jonathan\CLionProjects\ActivityTracker\Activity.cpp \
- C:\Users\Jonathan\CLionProjects\ActivityTracker\Activity.h \
  C:/Users/Jonathan/Desktop/wxWidgets_3.0.5/include/wx/datetime.h \
  C:/Users/Jonathan/Desktop/wxWidgets_3.0.5/include/wx/defs.h \
  C:/Users/Jonathan/Desktop/wxWidgets_3.0.5/include/wx/platform.h \
@@ -148,4 +147,5 @@ CMakeFiles/ActivityTracker.dir/Activity.cpp.obj: \
  C:/Users/Jonathan/Desktop/wxWidgets_3.0.5/include/wx/wxcrtvararg.h \
  C:/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/5.1.0/include/c++/limits \
  C:/Users/Jonathan/Desktop/wxWidgets_3.0.5/include/wx/anystr.h \
- C:/Users/Jonathan/Desktop/wxWidgets_3.0.5/include/wx/dynarray.h
+ C:/Users/Jonathan/Desktop/wxWidgets_3.0.5/include/wx/dynarray.h \
+ C:\Users\Jonathan\CLionProjects\ActivityTracker\Activity.h

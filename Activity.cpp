@@ -1,4 +1,4 @@
-
+#include <wx/datetime.h>
 #include "Activity.h"
 
 Activity::Activity(const std::string &description, wxDateTime &startTime, wxDateTime &endTime)

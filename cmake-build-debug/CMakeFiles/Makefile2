@@ -62,16 +62,80 @@ CMAKE_BINARY_DIR = C:\Users\Jonathan\CLionProjects\ActivityTracker\cmake-build-d
 # Directory level rules for the build root directory
 
 # The main recursive "all" target.
+all: CMakeFiles/core.dir/all
 all: CMakeFiles/ActivityTracker.dir/all
+all: test/all
 .PHONY : all
 
 # The main recursive "preinstall" target.
-preinstall:
+preinstall: test/preinstall
 .PHONY : preinstall
 
 # The main recursive "clean" target.
+clean: CMakeFiles/core.dir/clean
 clean: CMakeFiles/ActivityTracker.dir/clean
+clean: test/clean
 .PHONY : clean
+
+#=============================================================================
+# Directory level rules for directory test
+
+# Recursive "all" directory target.
+test/all: test/CMakeFiles/runActivityTrackerTest.dir/all
+test/all: test/lib/googletest/all
+.PHONY : test/all
+
+# Recursive "preinstall" directory target.
+test/preinstall: test/lib/googletest/preinstall
+.PHONY : test/preinstall
+
+# Recursive "clean" directory target.
+test/clean: test/CMakeFiles/runActivityTrackerTest.dir/clean
+test/clean: test/lib/googletest/clean
+.PHONY : test/clean
+
+#=============================================================================
+# Directory level rules for directory test/lib/googletest
+
+# Recursive "all" directory target.
+test/lib/googletest/all: test/lib/googletest/CMakeFiles/gtest.dir/all
+test/lib/googletest/all: test/lib/googletest/CMakeFiles/gtest_main.dir/all
+.PHONY : test/lib/googletest/all
+
+# Recursive "preinstall" directory target.
+test/lib/googletest/preinstall:
+.PHONY : test/lib/googletest/preinstall
+
+# Recursive "clean" directory target.
+test/lib/googletest/clean: test/lib/googletest/CMakeFiles/gtest.dir/clean
+test/lib/googletest/clean: test/lib/googletest/CMakeFiles/gtest_main.dir/clean
+.PHONY : test/lib/googletest/clean
+
+#=============================================================================
+# Target rules for target CMakeFiles/core.dir
+
+# All Build rule for target.
+CMakeFiles/core.dir/all:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\core.dir\build.make CMakeFiles/core.dir/depend
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\core.dir\build.make CMakeFiles/core.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:\Users\Jonathan\CLionProjects\ActivityTracker\cmake-build-debug\CMakeFiles --progress-num=7,8,9,10,11,12 "Built target core"
+.PHONY : CMakeFiles/core.dir/all
+
+# Build rule for subdir invocation for target.
+CMakeFiles/core.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\Jonathan\CLionProjects\ActivityTracker\cmake-build-debug\CMakeFiles 6
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 CMakeFiles/core.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\Jonathan\CLionProjects\ActivityTracker\cmake-build-debug\CMakeFiles 0
+.PHONY : CMakeFiles/core.dir/rule
+
+# Convenience name for target.
+core: CMakeFiles/core.dir/rule
+.PHONY : core
+
+# clean rule for target.
+CMakeFiles/core.dir/clean:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\core.dir\build.make CMakeFiles/core.dir/clean
+.PHONY : CMakeFiles/core.dir/clean
 
 #=============================================================================
 # Target rules for target CMakeFiles/ActivityTracker.dir
@@ -98,6 +162,86 @@ ActivityTracker: CMakeFiles/ActivityTracker.dir/rule
 CMakeFiles/ActivityTracker.dir/clean:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\ActivityTracker.dir\build.make CMakeFiles/ActivityTracker.dir/clean
 .PHONY : CMakeFiles/ActivityTracker.dir/clean
+
+#=============================================================================
+# Target rules for target test/CMakeFiles/runActivityTrackerTest.dir
+
+# All Build rule for target.
+test/CMakeFiles/runActivityTrackerTest.dir/all: CMakeFiles/core.dir/all
+test/CMakeFiles/runActivityTrackerTest.dir/all: test/lib/googletest/CMakeFiles/gtest.dir/all
+test/CMakeFiles/runActivityTrackerTest.dir/all: test/lib/googletest/CMakeFiles/gtest_main.dir/all
+	$(MAKE) $(MAKESILENT) -f test\CMakeFiles\runActivityTrackerTest.dir\build.make test/CMakeFiles/runActivityTrackerTest.dir/depend
+	$(MAKE) $(MAKESILENT) -f test\CMakeFiles\runActivityTrackerTest.dir\build.make test/CMakeFiles/runActivityTrackerTest.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:\Users\Jonathan\CLionProjects\ActivityTracker\cmake-build-debug\CMakeFiles --progress-num=17,18,19,20 "Built target runActivityTrackerTest"
+.PHONY : test/CMakeFiles/runActivityTrackerTest.dir/all
+
+# Build rule for subdir invocation for target.
+test/CMakeFiles/runActivityTrackerTest.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\Jonathan\CLionProjects\ActivityTracker\cmake-build-debug\CMakeFiles 14
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 test/CMakeFiles/runActivityTrackerTest.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\Jonathan\CLionProjects\ActivityTracker\cmake-build-debug\CMakeFiles 0
+.PHONY : test/CMakeFiles/runActivityTrackerTest.dir/rule
+
+# Convenience name for target.
+runActivityTrackerTest: test/CMakeFiles/runActivityTrackerTest.dir/rule
+.PHONY : runActivityTrackerTest
+
+# clean rule for target.
+test/CMakeFiles/runActivityTrackerTest.dir/clean:
+	$(MAKE) $(MAKESILENT) -f test\CMakeFiles\runActivityTrackerTest.dir\build.make test/CMakeFiles/runActivityTrackerTest.dir/clean
+.PHONY : test/CMakeFiles/runActivityTrackerTest.dir/clean
+
+#=============================================================================
+# Target rules for target test/lib/googletest/CMakeFiles/gtest.dir
+
+# All Build rule for target.
+test/lib/googletest/CMakeFiles/gtest.dir/all:
+	$(MAKE) $(MAKESILENT) -f test\lib\googletest\CMakeFiles\gtest.dir\build.make test/lib/googletest/CMakeFiles/gtest.dir/depend
+	$(MAKE) $(MAKESILENT) -f test\lib\googletest\CMakeFiles\gtest.dir\build.make test/lib/googletest/CMakeFiles/gtest.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:\Users\Jonathan\CLionProjects\ActivityTracker\cmake-build-debug\CMakeFiles --progress-num=13,14 "Built target gtest"
+.PHONY : test/lib/googletest/CMakeFiles/gtest.dir/all
+
+# Build rule for subdir invocation for target.
+test/lib/googletest/CMakeFiles/gtest.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\Jonathan\CLionProjects\ActivityTracker\cmake-build-debug\CMakeFiles 2
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 test/lib/googletest/CMakeFiles/gtest.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\Jonathan\CLionProjects\ActivityTracker\cmake-build-debug\CMakeFiles 0
+.PHONY : test/lib/googletest/CMakeFiles/gtest.dir/rule
+
+# Convenience name for target.
+gtest: test/lib/googletest/CMakeFiles/gtest.dir/rule
+.PHONY : gtest
+
+# clean rule for target.
+test/lib/googletest/CMakeFiles/gtest.dir/clean:
+	$(MAKE) $(MAKESILENT) -f test\lib\googletest\CMakeFiles\gtest.dir\build.make test/lib/googletest/CMakeFiles/gtest.dir/clean
+.PHONY : test/lib/googletest/CMakeFiles/gtest.dir/clean
+
+#=============================================================================
+# Target rules for target test/lib/googletest/CMakeFiles/gtest_main.dir
+
+# All Build rule for target.
+test/lib/googletest/CMakeFiles/gtest_main.dir/all: test/lib/googletest/CMakeFiles/gtest.dir/all
+	$(MAKE) $(MAKESILENT) -f test\lib\googletest\CMakeFiles\gtest_main.dir\build.make test/lib/googletest/CMakeFiles/gtest_main.dir/depend
+	$(MAKE) $(MAKESILENT) -f test\lib\googletest\CMakeFiles\gtest_main.dir\build.make test/lib/googletest/CMakeFiles/gtest_main.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:\Users\Jonathan\CLionProjects\ActivityTracker\cmake-build-debug\CMakeFiles --progress-num=15,16 "Built target gtest_main"
+.PHONY : test/lib/googletest/CMakeFiles/gtest_main.dir/all
+
+# Build rule for subdir invocation for target.
+test/lib/googletest/CMakeFiles/gtest_main.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\Jonathan\CLionProjects\ActivityTracker\cmake-build-debug\CMakeFiles 4
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 test/lib/googletest/CMakeFiles/gtest_main.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\Jonathan\CLionProjects\ActivityTracker\cmake-build-debug\CMakeFiles 0
+.PHONY : test/lib/googletest/CMakeFiles/gtest_main.dir/rule
+
+# Convenience name for target.
+gtest_main: test/lib/googletest/CMakeFiles/gtest_main.dir/rule
+.PHONY : gtest_main
+
+# clean rule for target.
+test/lib/googletest/CMakeFiles/gtest_main.dir/clean:
+	$(MAKE) $(MAKESILENT) -f test\lib\googletest\CMakeFiles\gtest_main.dir\build.make test/lib/googletest/CMakeFiles/gtest_main.dir/clean
+.PHONY : test/lib/googletest/CMakeFiles/gtest_main.dir/clean
 
 #=============================================================================
 # Special targets to cleanup operation of make.

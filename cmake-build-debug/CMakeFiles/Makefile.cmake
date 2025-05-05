@@ -22,6 +22,7 @@ set(CMAKE_MAKEFILE_DEPENDS
   "C:/Program Files/JetBrains/CLion 2024.2.3/bin/cmake/win/x64/share/cmake-3.29/Modules/Compiler/GNU.cmake"
   "C:/Program Files/JetBrains/CLion 2024.2.3/bin/cmake/win/x64/share/cmake-3.29/Modules/FindPackageHandleStandardArgs.cmake"
   "C:/Program Files/JetBrains/CLion 2024.2.3/bin/cmake/win/x64/share/cmake-3.29/Modules/FindPackageMessage.cmake"
+  "C:/Program Files/JetBrains/CLion 2024.2.3/bin/cmake/win/x64/share/cmake-3.29/Modules/FindPythonInterp.cmake"
   "C:/Program Files/JetBrains/CLion 2024.2.3/bin/cmake/win/x64/share/cmake-3.29/Modules/FindwxWidgets.cmake"
   "C:/Program Files/JetBrains/CLion 2024.2.3/bin/cmake/win/x64/share/cmake-3.29/Modules/Platform/Windows-GNU-C-ABI.cmake"
   "C:/Program Files/JetBrains/CLion 2024.2.3/bin/cmake/win/x64/share/cmake-3.29/Modules/Platform/Windows-GNU-C.cmake"
@@ -38,6 +39,9 @@ set(CMAKE_MAKEFILE_DEPENDS
   "CMakeFiles/3.29.6/CMakeCXXCompiler.cmake"
   "CMakeFiles/3.29.6/CMakeRCCompiler.cmake"
   "CMakeFiles/3.29.6/CMakeSystem.cmake"
+  "C:/Users/Jonathan/CLionProjects/ActivityTracker/test/CMakeLists.txt"
+  "C:/Users/Jonathan/CLionProjects/ActivityTracker/test/lib/googletest/CMakeLists.txt"
+  "C:/Users/Jonathan/CLionProjects/ActivityTracker/test/lib/googletest/cmake/internal_utils.cmake"
   )
 
 # The corresponding makefile is:
@@ -49,9 +53,15 @@ set(CMAKE_MAKEFILE_OUTPUTS
 # Byproducts of CMake generate step:
 set(CMAKE_MAKEFILE_PRODUCTS
   "CMakeFiles/CMakeDirectoryInformation.cmake"
+  "test/CMakeFiles/CMakeDirectoryInformation.cmake"
+  "test/lib/googletest/CMakeFiles/CMakeDirectoryInformation.cmake"
   )
 
 # Dependency information for all targets:
 set(CMAKE_DEPEND_INFO_FILES
+  "CMakeFiles/core.dir/DependInfo.cmake"
   "CMakeFiles/ActivityTracker.dir/DependInfo.cmake"
+  "test/CMakeFiles/runActivityTrackerTest.dir/DependInfo.cmake"
+  "test/lib/googletest/CMakeFiles/gtest.dir/DependInfo.cmake"
+  "test/lib/googletest/CMakeFiles/gtest_main.dir/DependInfo.cmake"
   )
