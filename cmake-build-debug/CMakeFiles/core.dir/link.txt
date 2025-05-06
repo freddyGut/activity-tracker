@@ -1,2 +1,0 @@
-C:\TDM-GCC-64\bin\ar.exe qc libcore.a CMakeFiles/core.dir/main.cpp.obj CMakeFiles/core.dir/MainFrame.cpp.obj CMakeFiles/core.dir/Activity.cpp.obj CMakeFiles/core.dir/Register.cpp.obj CMakeFiles/core.dir/AddActivityDialog.cpp.obj
-C:\TDM-GCC-64\bin\ranlib.exe libcore.a
