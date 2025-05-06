@@ -1,0 +1,42 @@
+# Default ignored files
+/shelf/
+/workspace.xml
+# Editor-based HTTP Client requests
+/httpRequests/
+# Datasource local storage ignored files
+/dataSources/
+/dataSources.local.xml
+
+# === CMake build directory ===
+cmake-build-*/
+
+# === IDEs ===
+.idea/
+.vscode/
+
+# === Compiled binaries and object files ===
+*.exe
+*.o
+*.obj
+*.a
+*.lib
+*.dll
+*.so
+
+# === CMake-generated files ===
+CMakeFiles/
+CMakeCache.txt
+cmake_install.cmake
+Makefile
+
+# === System files ===
+.DS_Store
+Thumbs.db
+
+# === Google Test build artifacts ===
+googletest/build/
+googletest/.vs/
+googletest/CMakeFiles/
+googletest/CMakeCache.txt
+googletest/cmake_install.cmake
+googletest/Makefile

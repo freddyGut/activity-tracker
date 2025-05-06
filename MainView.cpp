@@ -5,7 +5,7 @@
 #include <wx/calctrl.h> // events and costructors for calendars
 
 
-#include "MainFrame.h"
+#include "MainView.h"
 #include "Register.h"
 
 #include <wx/generic/textdlgg.h>
@@ -14,7 +14,7 @@
 
 
 // === Constructor ===
-MainFrame::MainFrame(const wxString& title): wxFrame(nullptr, wxID_ANY, title, wxPoint(200,200), wxSize(8000, 600))
+MainView::MainView(const wxString& title): wxFrame(nullptr, wxID_ANY, title, wxPoint(200,200), wxSize(8000, 600))
 {
     SetBackgroundColour(wxColour(0, 116, 166));
 
@@ -66,9 +66,9 @@ MainFrame::MainFrame(const wxString& title): wxFrame(nullptr, wxID_ANY, title, w
     SetSizerAndFit(mainSizer);
 
     // Binding
-    calendar->Bind(wxEVT_CALENDAR_SEL_CHANGED, &MainFrame::OnDateChanged, this);
-    addActivityButton->Bind(wxEVT_BUTTON, &MainFrame::OnAddActivity, this);
-    removeActivityButton->Bind(wxEVT_BUTTON, &MainFrame::OnRemoveActivity, this);
+    calendar->Bind(wxEVT_CALENDAR_SEL_CHANGED, &MainView::OnDateChanged, this);
+    addActivityButton->Bind(wxEVT_BUTTON, &MainView::OnAddActivity, this);
+    removeActivityButton->Bind(wxEVT_BUTTON, &MainView::OnRemoveActivity, this);
 
     _register = Register();
     UpdateActivityList(calendar->GetDate());
@@ -84,13 +84,13 @@ MainFrame::MainFrame(const wxString& title): wxFrame(nullptr, wxID_ANY, title, w
 
 
 // === EVENT HANDLERS === OK
-void MainFrame::OnDateChanged(wxCalendarEvent& event)
+void MainView::OnDateChanged(wxCalendarEvent& event)
 {
     wxDateTime selectedDate = event.GetDate();
     UpdateActivityList(selectedDate);
 }
 
-void MainFrame::OnAddActivity(wxCommandEvent& event)
+void MainView::OnAddActivity(wxCommandEvent& event)
 {
     AddActivityDialog* dialog = new AddActivityDialog(this);
 
@@ -139,7 +139,7 @@ void MainFrame::OnAddActivity(wxCommandEvent& event)
 
 }
 
-void MainFrame::OnRemoveActivity(wxCommandEvent& event)
+void MainView::OnRemoveActivity(wxCommandEvent& event)
 {
     int activityIndex = activityList->GetNextItem(-1, wxLIST_NEXT_ALL, wxLIST_STATE_SELECTED);
     if (activityIndex == -1)
@@ -170,7 +170,7 @@ void MainFrame::OnRemoveActivity(wxCommandEvent& event)
 
 
 // === HELPER === OK
-void MainFrame::UpdateActivityList(const wxDateTime& selectedDate)
+void MainView::UpdateActivityList(const wxDateTime& selectedDate)
 {
     activityList->DeleteAllItems();
 
