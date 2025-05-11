@@ -24,9 +24,11 @@ private:
     void OnDateChanged(wxCalendarEvent& event);
     void OnAddActivity(wxCommandEvent& event);
     void OnRemoveActivity(wxCommandEvent& event);
+    void OnSearchActivity(wxCommandEvent& event);
 
     void BindEvents();
     void UpdateActivityList(const wxDateTime& date);
+    void UpdateTotalActivitiesText(int total);
 };
 
 

@@ -15,7 +15,7 @@ void Register::AddActivity(const wxDateTime day, const Activity &activity) {
 
 }
 
-void Register::RemoveActivity(const wxDateTime &day, const Activity &activity) {
+bool Register::RemoveActivity(const wxDateTime &day, const Activity &activity) {
 
     wxDateTime normalizedDate = day;
     normalizedDate.ResetTime();
@@ -30,8 +30,11 @@ void Register::RemoveActivity(const wxDateTime &day, const Activity &activity) {
                 && a.getFormattedEndTime() == activity.getFormattedEndTime();
             }),
             activities.end());
+
+        return true;
     }
 
+    return false;
 
 }
 
@@ -41,7 +44,7 @@ void Register::RemoveActivity(const wxDateTime &day, const Activity &activity) {
 
 
 
-std::vector<Activity> Register::GetActivitiesPerDate(const wxDateTime& day) {
+std::vector<Activity> Register::GetActivitiesPerDate(const wxDateTime& day) const {
 
     wxDateTime normalizedDate = day;
     normalizedDate.ResetTime();
@@ -56,3 +59,30 @@ std::vector<Activity> Register::GetActivitiesPerDate(const wxDateTime& day) {
     return {};
 }
 
+
+
+int Register::GetTotalActivities() const {
+
+    int total = 0;
+    for (const auto& pair: registerMap) {
+        total += static_cast<int>(pair.second.size());
+    }
+
+    return total;
+}
+
+
+std::vector<Activity> Register::GetActivitiesPerDescription(const std::string &description) const {
+
+    std::vector<Activity> result;
+
+    for (const auto& pair : registerMap) {
+        for (const auto& activity : pair.second) {
+            if (activity.getDescription() == description) {
+                result.push_back(activity);
+            }
+        }
+    }
+
+    return result;
+}

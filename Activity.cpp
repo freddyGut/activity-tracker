@@ -1,10 +1,19 @@
 #include <wx/datetime.h>
+#include <stdexcept>
+
 #include "Activity.h"
 
+// controlli tempo start end eccezione
 Activity::Activity(const std::string &description, wxDateTime &startTime, wxDateTime &endTime)
-    : description(description), startTime(startTime), endTime(endTime) { }
+    : description(description), startTime(startTime), endTime(endTime) {
 
-Activity::Activity() : description(" "), startTime(wxDateTime::Now()), endTime(wxDateTime::Now()){ }
+    if (!startTime.IsEarlierThan(endTime)) {
+        throw std::invalid_argument("Start time must be earlier than end time");
+    }
+}
+
+Activity::Activity() :
+description(" "), startTime(wxDateTime::Now()), endTime(wxDateTime::Now() + wxTimeSpan::Hours(1)){ }
 
 
 // === GETTERS ===
@@ -19,7 +28,7 @@ wxDateTime Activity::getEndTime() const {
   }
 
 
-// === SETTERS ===
+// === SETTERS === FORMATTA
 void Activity::setDescription(const std::string& description) {
       this->description = description;
   }
@@ -31,17 +40,14 @@ void Activity::setEndTime(const wxDateTime& endTime) {
   }
 
 
-std::string Activity::getFormattedStartTime() const
-{
+std::string Activity::getFormattedStartTime() const {
     return startTime.Format("%H:%M").ToStdString();
 }
 
-std::string Activity::getFormattedEndTime() const
-{
+std::string Activity::getFormattedEndTime() const {
     return endTime.Format("%H:%M").ToStdString();
 }
 
-bool Activity::operator<(const Activity& other) const
-{
+bool Activity::operator<(const Activity& other) const {
     return startTime.IsEarlierThan(other.startTime);
 }

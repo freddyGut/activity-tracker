@@ -105,15 +105,5 @@ int AddActivityDialog::GetEndMinute() const
 
 void AddActivityDialog::OnOK(wxCommandEvent& event)
 {
-    // Fetching values from spin controls
-    //startHour = GetStartHour();
-    //startMinute = GetStartMinute();
-    //endHour = GetEndHour();
-    //endMinute = GetEndMinute();
-
-    // Fetching the description
-    //description = GetDescription();
-
-    // Closing the window, everything ran well
     EndModal(wxID_OK);
 }

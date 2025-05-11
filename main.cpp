@@ -1,6 +1,8 @@
 #include <wx/wx.h>
 
-#include "MainFrame.h"
+#include "MainView.h"
+#include "Register.h"
+#include "MainController.h"
 
 class MyApp : public wxApp {
 public:
@@ -10,8 +12,11 @@ public:
 
 bool MyApp::OnInit() {
 
-    auto* mainFrame = new MainFrame("ACTIVITY TRACKER");
-    mainFrame->Show(true);
+    auto* model = new Register();
+    auto* view = new MainView("ACTIVITY TRACKER");
+    auto* controller = new MainController(view, model);
+    controller->Init();
+    view->Show(true);
     return true;
 }
 

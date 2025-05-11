@@ -16,14 +16,18 @@ include(${wxWidgets_USE_FILE})
 
 # source files
 set(SOURCE_FILES main.cpp
-        MainFrame.cpp
-        MainFrame.h
+        MainView.cpp
+        MainView.h
+        MainController.cpp
+        MainController.h
         Activity.cpp
         Activity.h
         Register.cpp
         Register.h
         AddActivityDialog.cpp
-        AddActivityDialog.h)
+        AddActivityDialog.h
+        SearchActivityDialog.cpp
+        SearchActivityDialog.h)
 
 # shared library, to reuse in tests
 add_library(core ${SOURCE_FILES})

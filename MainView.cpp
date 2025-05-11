@@ -21,6 +21,8 @@ MainView::MainView(const wxString& title): wxFrame(nullptr, wxID_ANY, title, wxP
     // Main sizer: HORIZONTAL
     wxBoxSizer* mainSizer = new wxBoxSizer(wxHORIZONTAL);
 
+
+    wxBoxSizer* leftSizer = new wxBoxSizer(wxVERTICAL);
     // Bigger calendar
     calendar = new wxGenericCalendarCtrl(this, ID_Calendar, wxDefaultDateTime, wxDefaultPosition, wxSize(300, 400));
     wxFont calendarFont(14, wxFONTFAMILY_ROMAN, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_BOLD, false, "Rockwell");
@@ -28,6 +30,30 @@ MainView::MainView(const wxString& title): wxFrame(nullptr, wxID_ANY, title, wxP
     calendar->SetHeaderColours(*wxWHITE, wxColour(0, 65, 112));        // Header text
     calendar->SetHighlightColours(*wxWHITE, *wxRED);      // Selected day
     calendar->SetHolidayColours(*wxBLUE, *wxWHITE);      // Festivity
+
+
+    wxBoxSizer* infoSizer = new wxBoxSizer(wxHORIZONTAL);
+
+    totalActivitiesText = new wxStaticText(this, wxID_ANY, "Total activities: 0  ");
+    wxFont totalActivitiesFont(9, wxFONTFAMILY_ROMAN, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_BOLD, false, "Rockwell");
+    totalActivitiesText->SetFont(totalActivitiesFont);
+    totalActivitiesText->SetForegroundColour(*wxWHITE);
+    searchBox = new wxTextCtrl(this, wxID_ANY);
+    wxFont searchFont(7, wxFONTFAMILY_ROMAN, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_BOLD, false, "Rockwell");
+    searchBox->SetFont(searchFont);
+    searchBox->SetHint("Search by description"); //placeholder
+    searchButton = new wxButton(this, ID_SearchActivity, "Search");
+    searchButton->SetBackgroundColour(wxColour(0, 65, 112));
+    searchButton->SetForegroundColour(*wxWHITE);
+    searchButton->SetFont(totalActivitiesFont);
+
+    infoSizer->Add(totalActivitiesText, 0);
+    infoSizer->Add(searchBox, 0);
+    infoSizer->Add(searchButton, 0);
+
+    leftSizer->Add(calendar, 0, wxALL);
+    leftSizer->Add(infoSizer, 0, wxALL);
+
 
     // Right sizer: VERTICAL (activities + buttons)
     wxBoxSizer* rightSizer = new wxBoxSizer(wxVERTICAL);
@@ -59,20 +85,40 @@ MainView::MainView(const wxString& title): wxFrame(nullptr, wxID_ANY, title, wxP
     rightSizer->Add(activityList, 0, wxEXPAND | wxALL, 5);
     rightSizer->Add(buttonSizer, 0, wxALIGN_CENTER | wxBOTTOM, 10);
 
-    // Putting the calendar on the left and rightSizer on the right
-    mainSizer->Add(calendar, 1, wxALL, 10);
-    mainSizer->Add(rightSizer, 1, wxEXPAND | wxALL, 10);
+    mainSizer->Add(leftSizer, 1, wxEXPAND | wxALL);
+    mainSizer->Add(rightSizer, 1, wxEXPAND | wxALL);
 
     SetSizerAndFit(mainSizer);
+}
 
-    // Binding
-    calendar->Bind(wxEVT_CALENDAR_SEL_CHANGED, &MainView::OnDateChanged, this);
-    addActivityButton->Bind(wxEVT_BUTTON, &MainView::OnAddActivity, this);
-    removeActivityButton->Bind(wxEVT_BUTTON, &MainView::OnRemoveActivity, this);
 
-    _register = Register();
-    UpdateActivityList(calendar->GetDate());
 
+wxGenericCalendarCtrl* MainView::GetCalendar() const {
+    return calendar;
+}
+
+wxListCtrl* MainView::GetActivityList() const {
+    return activityList;
+}
+
+wxButton* MainView::GetAddActivityButton() const {
+    return addActivityButton;
+}
+
+wxButton* MainView::GetRemoveActivityButton() const {
+    return removeActivityButton;
+}
+
+wxStaticText* MainView::GetTotalActivitiesText() const {
+    return totalActivitiesText;
+}
+
+wxTextCtrl* MainView::GetSearchBox() const {
+    return searchBox;
+}
+
+wxButton* MainView::GetSearchButton() const {
+    return searchButton;
 }
 
 
@@ -83,85 +129,6 @@ MainView::MainView(const wxString& title): wxFrame(nullptr, wxID_ANY, title, wxP
 
 
 
-// === EVENT HANDLERS === OK
-void MainView::OnDateChanged(wxCalendarEvent& event)
-{
-    wxDateTime selectedDate = event.GetDate();
-    UpdateActivityList(selectedDate);
-}
-
-void MainView::OnAddActivity(wxCommandEvent& event)
-{
-    AddActivityDialog* dialog = new AddActivityDialog(this);
-
-
-    // the users presses OK
-    if (dialog->ShowModal() == wxID_OK) {
-        wxString description = dialog->GetDescription();
-        if (description.IsEmpty()) {
-            wxLogError("Description cannot be empty");
-            return;
-        }
-        int startHour = dialog->GetStartHour();
-        int startMinute = dialog->GetStartMinute();
-        int endHour = dialog->GetEndHour();
-        int endMinute = dialog->GetEndMinute();
-
-        if (startHour > endHour || (startHour == endHour && startMinute >= endMinute)) {
-            wxLogError("Start time must be before end time");
-            return;
-        }
-
-        // building DateTime object
-        wxDateTime date = calendar->GetDate();
-        if (!date.IsValid()) {
-            wxLogError("Invalid date selected.");
-            return;
-        }
-
-        wxDateTime startTime(date.GetDay(), date.GetMonth(), date.GetYear(), startHour, startMinute);
-        wxDateTime endTime(date.GetDay(), date.GetMonth(), date.GetYear(), endHour, endMinute);
-
-        // Creating the new activity
-        Activity activity(description.ToStdString(), startTime, endTime);
-
-        // Saving the activity in the register
-        _register.AddActivity(date, activity);
-
-
-        // Updating visible list
-        UpdateActivityList(date);
-
-
-    }
-
-    dialog->Destroy();
-
-}
-
-void MainView::OnRemoveActivity(wxCommandEvent& event)
-{
-    int activityIndex = activityList->GetNextItem(-1, wxLIST_NEXT_ALL, wxLIST_STATE_SELECTED);
-    if (activityIndex == -1)
-    {
-        wxMessageBox("No activity selected!", "Error", wxOK | wxICON_ERROR);
-        return;
-    }
-
-    wxDateTime date = calendar->GetDate();
-    std::vector<Activity> activities = _register.GetActivitiesPerDate(date);
-
-    if (activityIndex < 0 || activityIndex >= static_cast<int>(activities.size()))
-    {
-        wxMessageBox("Invalid activity selected!", "Error", wxOK | wxICON_ERROR);
-        return;
-    }
-
-    Activity selectedActivity = activities[activityIndex];
-    _register.RemoveActivity(date, selectedActivity);
-
-    UpdateActivityList(date);
-}
 
 
 
@@ -169,28 +136,9 @@ void MainView::OnRemoveActivity(wxCommandEvent& event)
 
 
 
-// === HELPER === OK
-void MainView::UpdateActivityList(const wxDateTime& selectedDate)
-{
-    activityList->DeleteAllItems();
 
-    std::vector<Activity> activities = _register.GetActivitiesPerDate(selectedDate);
 
-    int index = 0;
-    for (const auto& activity : activities)
-    {
-        wxString time = activity.getFormattedStartTime() + " - " + activity.getFormattedEndTime();
-        wxString description = activity.getDescription();
 
-        index = activityList->InsertItem(index, time);
-        activityList->SetItem(index, 1, description);
 
-        //alternating colors
-        wxColour rowColor = (index % 2 == 0) ? wxColour(245, 245, 245) : wxColour(230, 230, 255);
-        activityList->SetItemBackgroundColour(index, rowColor);
-
-        ++index;
-    }
-}
 
 

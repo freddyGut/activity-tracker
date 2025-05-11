@@ -57,3 +57,16 @@ TEST(ActivityTest, ConstructorStoresValuesCorrectly) {
     EXPECT_EQ(a.getFormattedStartTime(), "10:00");
     EXPECT_EQ(a.getFormattedEndTime(), "12:00");
 }
+
+TEST(ActivityTest, ConstructorThrowsIfStartAfterEnd) {
+    wxDateTime start(9, wxDateTime::Jan, 2024, 15, 0);
+    wxDateTime end(9, wxDateTime::Jan, 2024, 12, 0);
+
+    EXPECT_THROW({Activity a("Meeting", start, end);}, std::invalid_argument);
+}
+
+TEST(ActivityTest, ConstructorThrowsIfStartEqualsEnd) {
+    wxDateTime now = wxDateTime::Now();
+
+    EXPECT_THROW({Activity a("Test", now, now);}, std::invalid_argument);
+}

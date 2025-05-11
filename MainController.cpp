@@ -2,6 +2,7 @@
 #include "MainController.h"
 
 #include "AddActivityDialog.h"
+#include "SearchActivityDialog.h"
 
 MainController::MainController(MainView* view, Register* model)
     : view(view), model(model) {}
@@ -18,6 +19,7 @@ void MainController::BindEvents() {
     view->GetCalendar()->Bind(wxEVT_CALENDAR_SEL_CHANGED, &MainController::OnDateChanged, this);
     view->GetAddActivityButton()->Bind(wxEVT_BUTTON, &MainController::OnAddActivity, this);
     view->GetRemoveActivityButton()->Bind(wxEVT_BUTTON, &MainController::OnRemoveActivity, this);
+    view->GetSearchButton()->Bind(wxEVT_BUTTON, &MainController::OnSearchActivity, this);
 }
 
 
@@ -45,10 +47,10 @@ void MainController::OnAddActivity(wxCommandEvent& event)
         int endHour = dialog->GetEndHour();
         int endMinute = dialog->GetEndMinute();
 
-        if (startHour > endHour || (startHour == endHour && startMinute >= endMinute)) {
-            wxLogError("Start time must be before end time");
-            return;
-        }
+        //if (startHour > endHour || (startHour == endHour && startMinute >= endMinute)) {
+        //    wxLogError("Start time must be before end time");
+        //    return;
+        //}
 
         // building DateTime object
         wxDateTime date = view->GetCalendar()->GetDate();
@@ -60,15 +62,15 @@ void MainController::OnAddActivity(wxCommandEvent& event)
         wxDateTime startTime(date.GetDay(), date.GetMonth(), date.GetYear(), startHour, startMinute);
         wxDateTime endTime(date.GetDay(), date.GetMonth(), date.GetYear(), endHour, endMinute);
 
-        // Creating the new activity
-        Activity activity(description.ToStdString(), startTime, endTime);
+        try {
+            Activity activity(description.ToStdString(), startTime, endTime);
+            model->AddActivity(date, activity);
+            UpdateTotalActivitiesText(model->GetTotalActivities());
+            UpdateActivityList(date);
+        } catch (const std::invalid_argument& e) {
+            wxLogError(e.what());
+        }
 
-        // Saving the activity in the register
-        model->AddActivity(date, activity);
-
-
-        // Updating visible list
-        UpdateActivityList(date);
 
 
     }
@@ -98,10 +100,33 @@ void MainController::OnRemoveActivity(wxCommandEvent& event)
     }
 
     Activity selectedActivity = activities[activityIndex];
-    model->RemoveActivity(date, selectedActivity);
+    bool removed = model->RemoveActivity(date, selectedActivity);
+    if (!removed) {
+        wxMessageBox("Activity not found!", "Error", wxOK | wxICON_ERROR);
+        return;
+    }
 
     UpdateActivityList(date);
+    UpdateTotalActivitiesText(model->GetTotalActivities());
 }
+
+
+void MainController::OnSearchActivity(wxCommandEvent &event) {
+
+    std::string description = view->GetSearchBox()->GetValue().ToStdString();
+    std::vector<Activity> searchActivities = model->GetActivitiesPerDescription(description);
+    if (searchActivities.size() == 0) {
+        wxMessageBox("Activity not found!", "Error", wxOK | wxICON_ERROR);
+        return;
+    }
+
+    SearchActivityDialog* searchActivityDialog = new SearchActivityDialog(view);
+    searchActivityDialog->ShowActivities(searchActivities);
+    searchActivityDialog->ShowModal();
+    searchActivityDialog->Destroy();
+
+}
+
 
 
 // === HELPER === OK
@@ -126,4 +151,9 @@ void MainController::UpdateActivityList(const wxDateTime& selectedDate)
 
         ++index;
     }
+}
+
+
+void MainController::UpdateTotalActivitiesText(int total) {
+    view->GetTotalActivitiesText()->SetLabel(wxString::Format("Total activities: %d  ", total));
 }

@@ -2,7 +2,6 @@
 #include <wx/datetime.h>
 #include "../Register.h"
 
-
 class RegisterTestFixture : public ::testing::Test {
 protected:
   Register reg;
@@ -50,6 +49,14 @@ TEST_F(RegisterTestFixture, RemoveActivityWorksCorrectly) {
   auto activities = reg.GetActivitiesPerDate(date);
   ASSERT_EQ(activities.size(), 1);
   ASSERT_EQ(activities[0].getDescription(), "Run");
+}
+
+TEST_F(RegisterTestFixture, RemoveActivityNotAdded) {
+  auto t1 = wxDateTime::Today() + wxTimeSpan::Hours(5);
+  auto t2 = wxDateTime::Today() + wxTimeSpan::Hours(6);
+
+  bool result = reg.RemoveActivity(wxDateTime::Today(), Activity("Basket", t1, t2));
+  EXPECT_FALSE(result);
 }
 
 
@@ -103,4 +110,20 @@ TEST(RegisterTest, NoCrashOnRemoveFromEmptyDay) {
   Activity dummy("X", start, end);
 
   EXPECT_NO_THROW(reg.RemoveActivity(emptyDay, dummy));
+}
+
+
+TEST(registerTest, GetActivitiesByDescriptionReturnsCorrectMatches) {
+  Register reg;
+  wxDateTime day = wxDateTime::Today();
+  wxDateTime t1 = wxDateTime::Now();
+  wxDateTime t2 = t1 + wxTimeSpan::Hours(1);
+
+  reg.AddActivity(day, Activity("Study", t1, t2));
+  reg.AddActivity(day, Activity("Sport", t1, t2));
+  reg.AddActivity(day + wxTimeSpan::Days(1), Activity("Study", t1, t2));
+
+  auto result = reg.GetActivitiesPerDescription("Study");
+  EXPECT_EQ(result.size(), 2);
+
 }

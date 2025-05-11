@@ -11,33 +11,29 @@
 
 
 #include "Activity.h"
-#include "Register.h"
 
-class MainFrame : public wxFrame {
+class MainView : public wxFrame {
 
 public:
     // c-tor
-    explicit MainFrame(const wxString& title);
+    explicit MainView(const wxString& title);
 
+    wxGenericCalendarCtrl* GetCalendar() const;
+    wxListCtrl* GetActivityList() const;
+    wxButton* GetAddActivityButton() const;
+    wxButton* GetRemoveActivityButton() const;
+    wxStaticText* GetTotalActivitiesText() const;
+    wxTextCtrl* GetSearchBox() const;
+    wxButton* GetSearchButton() const;
 
 private:
-
-    Register _register;
-
-    // === GRAPHICAL COMPONENTS ===
     wxGenericCalendarCtrl* calendar;      // Calendar to select the days
     wxListCtrl* activityList;        // List of activities in the selected date
     wxButton* addActivityButton;    // Button to add a new activity
     wxButton* removeActivityButton; // Button to remove an activity
-
-    // === EVENT HANDLERS ===
-    void OnDateChanged(wxCalendarEvent& event);
-    void OnAddActivity(wxCommandEvent& event);
-    void OnRemoveActivity(wxCommandEvent& event);
-
-
-    // === HELPER ===
-    void UpdateActivityList(const wxDateTime& selectedDate);
+    wxStaticText* totalActivitiesText; // Stores the total number of activities
+    wxTextCtrl* searchBox; // Search by description
+    wxButton* searchButton;
 
 
     // === ID ===
@@ -45,7 +41,8 @@ private:
     {
         ID_Calendar = wxID_HIGHEST + 1,
         ID_AddActivity,
-        ID_RemoveActivity
+        ID_RemoveActivity,
+        ID_SearchActivity
     };
 
 };
