@@ -57,6 +57,10 @@ TEST_F(RegisterTestFixture, RemoveActivityNotAdded) {
     EXPECT_FALSE(result);
 }
 
+TEST_F(RegisterTestFixture, GetTotalNumberOfActivitiesWorks) {
+    EXPECT_EQ(reg.GetTotalNumberOfActivities(), 2);
+}
+
 
 // === BASIC TYPE OF TEST === //
 
