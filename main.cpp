@@ -11,14 +11,12 @@ public:
 
 
 bool MyApp::OnInit() {
-
-    auto* model = new Register();
-    auto* view = new MainView("ACTIVITY TRACKER");
-    auto* controller = new MainController(view, model);
+    auto *model = new Register();
+    auto *view = new MainView("ACTIVITY TRACKER");
+    auto *controller = new MainController(view, model);
     controller->Init();
     view->Show(true);
     return true;
 }
 
 wxIMPLEMENT_APP(MyApp);
-

@@ -11,19 +11,15 @@
 #include "Activity.h"
 
 
-
 class SearchActivityDialog : public wxDialog {
-
 public:
-    SearchActivityDialog(wxWindow* parent);
+    SearchActivityDialog(wxWindow *parent);
+
     void ShowActivities(std::vector<Activity> activities);
 
 private:
-     wxListCtrl* activityList;
-
-
+    wxListCtrl *activityList;
 };
-
 
 
 #endif //SEARCHACTIVITYDIALOG_H

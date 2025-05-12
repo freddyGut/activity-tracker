@@ -9,26 +9,21 @@
 #include "Activity.h"
 
 
-SearchActivityDialog::SearchActivityDialog(wxWindow* parent)
-    : wxDialog(parent, wxID_ANY, "Search activity list", wxPoint(400,300), wxSize(400, 300)) {
-
+SearchActivityDialog::SearchActivityDialog(wxWindow *parent)
+    : wxDialog(parent, wxID_ANY, "Search activity list", wxPoint(400, 300), wxSize(400, 300)) {
     SetBackgroundColour(wxColour(0, 116, 166));
     activityList = new wxListCtrl(this, wxID_ANY, wxDefaultPosition, wxSize(350, 400), wxLC_REPORT | wxBORDER_SUNKEN);
     wxFont listFont(12, wxFONTFAMILY_ROMAN, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_NORMAL, false, "Rockwell");
     activityList->SetFont(listFont);
 
     activityList->InsertColumn(0, "Day", wxLIST_FORMAT_LEFT, 150);
-    activityList->InsertColumn(1, "Time",wxLIST_FORMAT_LEFT, 250);
-
+    activityList->InsertColumn(1, "Time", wxLIST_FORMAT_LEFT, 250);
 }
 
 
 void SearchActivityDialog::ShowActivities(std::vector<Activity> activities) {
-
     int index = 0;
-    for (const auto& activity : activities)
-    {
-
+    for (const auto &activity: activities) {
         wxString day = activity.getStartTime().FormatDate();
         wxString time = activity.getFormattedStartTime() + " - " + activity.getFormattedEndTime();
 
@@ -41,6 +36,4 @@ void SearchActivityDialog::ShowActivities(std::vector<Activity> activities) {
 
         ++index;
     }
-
-
 }

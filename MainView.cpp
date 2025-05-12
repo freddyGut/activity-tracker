@@ -14,25 +14,24 @@
 
 
 // === Constructor ===
-MainView::MainView(const wxString& title): wxFrame(nullptr, wxID_ANY, title, wxPoint(200,200), wxSize(8000, 600))
-{
+MainView::MainView(const wxString &title): wxFrame(nullptr, wxID_ANY, title, wxPoint(200, 200), wxSize(8000, 600)) {
     SetBackgroundColour(wxColour(0, 116, 166));
 
     // Main sizer: HORIZONTAL
-    wxBoxSizer* mainSizer = new wxBoxSizer(wxHORIZONTAL);
+    wxBoxSizer *mainSizer = new wxBoxSizer(wxHORIZONTAL);
 
 
-    wxBoxSizer* leftSizer = new wxBoxSizer(wxVERTICAL);
+    wxBoxSizer *leftSizer = new wxBoxSizer(wxVERTICAL);
     // Bigger calendar
     calendar = new wxGenericCalendarCtrl(this, ID_Calendar, wxDefaultDateTime, wxDefaultPosition, wxSize(300, 400));
     wxFont calendarFont(14, wxFONTFAMILY_ROMAN, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_BOLD, false, "Rockwell");
     calendar->SetFont(calendarFont);
-    calendar->SetHeaderColours(*wxWHITE, wxColour(0, 65, 112));        // Header text
-    calendar->SetHighlightColours(*wxWHITE, *wxRED);      // Selected day
-    calendar->SetHolidayColours(*wxBLUE, *wxWHITE);      // Festivity
+    calendar->SetHeaderColours(*wxWHITE, wxColour(0, 65, 112)); // Header text
+    calendar->SetHighlightColours(*wxWHITE, *wxRED); // Selected day
+    calendar->SetHolidayColours(*wxBLUE, *wxWHITE); // Festivity
 
 
-    wxBoxSizer* infoSizer = new wxBoxSizer(wxHORIZONTAL);
+    wxBoxSizer *infoSizer = new wxBoxSizer(wxHORIZONTAL);
 
     totalActivitiesText = new wxStaticText(this, wxID_ANY, "Total activities: 0  ");
     wxFont totalActivitiesFont(9, wxFONTFAMILY_ROMAN, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_BOLD, false, "Rockwell");
@@ -51,19 +50,19 @@ MainView::MainView(const wxString& title): wxFrame(nullptr, wxID_ANY, title, wxP
     infoSizer->Add(searchBox, 0);
     infoSizer->Add(searchButton, 0);
 
-    leftSizer->Add(calendar, 0, wxALL);
+    leftSizer->Add(calendar, 1, wxALL | wxEXPAND);
     leftSizer->Add(infoSizer, 0, wxALL);
 
 
     // Right sizer: VERTICAL (activities + buttons)
-    wxBoxSizer* rightSizer = new wxBoxSizer(wxVERTICAL);
+    wxBoxSizer *rightSizer = new wxBoxSizer(wxVERTICAL);
 
     activityList = new wxListCtrl(this, wxID_ANY, wxDefaultPosition, wxSize(350, 400), wxLC_REPORT | wxBORDER_SUNKEN);
     wxFont listFont(12, wxFONTFAMILY_ROMAN, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_NORMAL, false, "Rockwell");
     activityList->SetFont(listFont);
 
     activityList->InsertColumn(0, "Time", wxLIST_FORMAT_LEFT, 120);
-    activityList->InsertColumn(1, "Description",wxLIST_FORMAT_LEFT, 230);
+    activityList->InsertColumn(1, "Description", wxLIST_FORMAT_LEFT, 230);
 
     // Buttons
     addActivityButton = new wxButton(this, ID_AddActivity, "Add Activity");
@@ -77,7 +76,7 @@ MainView::MainView(const wxString& title): wxFrame(nullptr, wxID_ANY, title, wxP
     removeActivityButton->SetFont(listFont);
 
 
-    wxBoxSizer* buttonSizer = new wxBoxSizer(wxHORIZONTAL);
+    wxBoxSizer *buttonSizer = new wxBoxSizer(wxHORIZONTAL);
     buttonSizer->Add(addActivityButton, 0, wxALL, 5);
     buttonSizer->Add(removeActivityButton, 0, wxALL, 5);
 
@@ -92,53 +91,30 @@ MainView::MainView(const wxString& title): wxFrame(nullptr, wxID_ANY, title, wxP
 }
 
 
-
-wxGenericCalendarCtrl* MainView::GetCalendar() const {
+wxGenericCalendarCtrl *MainView::GetCalendar() const {
     return calendar;
 }
 
-wxListCtrl* MainView::GetActivityList() const {
+wxListCtrl *MainView::GetActivityList() const {
     return activityList;
 }
 
-wxButton* MainView::GetAddActivityButton() const {
+wxButton *MainView::GetAddActivityButton() const {
     return addActivityButton;
 }
 
-wxButton* MainView::GetRemoveActivityButton() const {
+wxButton *MainView::GetRemoveActivityButton() const {
     return removeActivityButton;
 }
 
-wxStaticText* MainView::GetTotalActivitiesText() const {
+wxStaticText *MainView::GetTotalActivitiesText() const {
     return totalActivitiesText;
 }
 
-wxTextCtrl* MainView::GetSearchBox() const {
+wxTextCtrl *MainView::GetSearchBox() const {
     return searchBox;
 }
 
-wxButton* MainView::GetSearchButton() const {
+wxButton *MainView::GetSearchButton() const {
     return searchButton;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

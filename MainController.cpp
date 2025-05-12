@@ -1,11 +1,11 @@
-
 #include "MainController.h"
 
 #include "AddActivityDialog.h"
 #include "SearchActivityDialog.h"
 
-MainController::MainController(MainView* view, Register* model)
-    : view(view), model(model) {}
+MainController::MainController(MainView *view, Register *model)
+    : view(view), model(model) {
+}
 
 
 void MainController::Init() {
@@ -23,16 +23,14 @@ void MainController::BindEvents() {
 }
 
 
-void MainController::OnDateChanged(wxCalendarEvent& event)
-{
+void MainController::OnDateChanged(wxCalendarEvent &event) {
     wxDateTime selectedDate = event.GetDate();
     UpdateActivityList(selectedDate);
 }
 
 
-void MainController::OnAddActivity(wxCommandEvent& event)
-{
-    AddActivityDialog* dialog = new AddActivityDialog(view);
+void MainController::OnAddActivity(wxCommandEvent &event) {
+    AddActivityDialog *dialog = new AddActivityDialog(view);
 
 
     // the users presses OK
@@ -67,25 +65,18 @@ void MainController::OnAddActivity(wxCommandEvent& event)
             model->AddActivity(date, activity);
             UpdateTotalActivitiesText(model->GetTotalActivities());
             UpdateActivityList(date);
-        } catch (const std::invalid_argument& e) {
+        } catch (const std::invalid_argument &e) {
             wxLogError(e.what());
         }
-
-
-
     }
 
     dialog->Destroy();
-
 }
 
 
-
-void MainController::OnRemoveActivity(wxCommandEvent& event)
-{
+void MainController::OnRemoveActivity(wxCommandEvent &event) {
     int activityIndex = view->GetActivityList()->GetNextItem(-1, wxLIST_NEXT_ALL, wxLIST_STATE_SELECTED);
-    if (activityIndex == -1)
-    {
+    if (activityIndex == -1) {
         wxMessageBox("No activity selected!", "Error", wxOK | wxICON_ERROR);
         return;
     }
@@ -93,8 +84,7 @@ void MainController::OnRemoveActivity(wxCommandEvent& event)
     wxDateTime date = view->GetCalendar()->GetDate();
     std::vector<Activity> activities = model->GetActivitiesPerDate(date);
 
-    if (activityIndex < 0 || activityIndex >= static_cast<int>(activities.size()))
-    {
+    if (activityIndex < 0 || activityIndex >= static_cast<int>(activities.size())) {
         wxMessageBox("Invalid activity selected!", "Error", wxOK | wxICON_ERROR);
         return;
     }
@@ -112,7 +102,6 @@ void MainController::OnRemoveActivity(wxCommandEvent& event)
 
 
 void MainController::OnSearchActivity(wxCommandEvent &event) {
-
     std::string description = view->GetSearchBox()->GetValue().ToStdString();
     std::vector<Activity> searchActivities = model->GetActivitiesPerDescription(description);
     if (searchActivities.size() == 0) {
@@ -120,25 +109,21 @@ void MainController::OnSearchActivity(wxCommandEvent &event) {
         return;
     }
 
-    SearchActivityDialog* searchActivityDialog = new SearchActivityDialog(view);
+    SearchActivityDialog *searchActivityDialog = new SearchActivityDialog(view);
     searchActivityDialog->ShowActivities(searchActivities);
     searchActivityDialog->ShowModal();
     searchActivityDialog->Destroy();
-
 }
 
 
-
 // === HELPER === OK
-void MainController::UpdateActivityList(const wxDateTime& selectedDate)
-{
+void MainController::UpdateActivityList(const wxDateTime &selectedDate) {
     view->GetActivityList()->DeleteAllItems();
 
     std::vector<Activity> activities = model->GetActivitiesPerDate(selectedDate);
 
     int index = 0;
-    for (const auto& activity : activities)
-    {
+    for (const auto &activity: activities) {
         wxString time = activity.getFormattedStartTime() + " - " + activity.getFormattedEndTime();
         wxString description = activity.getDescription();
 

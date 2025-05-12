@@ -127,3 +127,19 @@ TEST(registerTest, GetActivitiesByDescriptionReturnsCorrectMatches) {
   EXPECT_EQ(result.size(), 2);
 
 }
+
+
+TEST(registerTest, GetActivitiesByDescriptionReturnsZeroLengthVector) {
+  Register reg;
+  wxDateTime day = wxDateTime::Today();
+  wxDateTime t1 = wxDateTime::Now();
+  wxDateTime t2 = t1 + wxTimeSpan::Hours(1);
+
+  reg.AddActivity(day, Activity("Study", t1, t2));
+  reg.AddActivity(day, Activity("Sport", t1, t2));
+  reg.AddActivity(day + wxTimeSpan::Days(1), Activity("Study", t1, t2));
+
+  auto result = reg.GetActivitiesPerDescription("Dinner");
+  EXPECT_EQ(result.size(), 0);
+
+}

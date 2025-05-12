@@ -1,4 +1,3 @@
-
 #ifndef MAINCONTROLLER_H
 #define MAINCONTROLLER_H
 #include <wx/wx.h>
@@ -13,24 +12,28 @@
 
 class MainController {
 public:
-    MainController(MainView* view, Register* model);
+    MainController(MainView *view, Register *model);
 
     void Init();
 
 private:
-    MainView* view;
-    Register* model;
+    MainView *view;
+    Register *model;
 
-    void OnDateChanged(wxCalendarEvent& event);
-    void OnAddActivity(wxCommandEvent& event);
-    void OnRemoveActivity(wxCommandEvent& event);
-    void OnSearchActivity(wxCommandEvent& event);
+    void OnDateChanged(wxCalendarEvent &event);
+
+    void OnAddActivity(wxCommandEvent &event);
+
+    void OnRemoveActivity(wxCommandEvent &event);
+
+    void OnSearchActivity(wxCommandEvent &event);
 
     void BindEvents();
-    void UpdateActivityList(const wxDateTime& date);
+
+    void UpdateActivityList(const wxDateTime &date);
+
     void UpdateTotalActivitiesText(int total);
 };
-
 
 
 #endif //MAINCONTROLLER_H

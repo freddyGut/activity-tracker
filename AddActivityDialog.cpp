@@ -1,13 +1,11 @@
-
 #include "AddActivityDialog.h"
 
 
-AddActivityDialog::AddActivityDialog(wxWindow* parent)
-    : wxDialog(parent, wxID_ANY, "Add activity", wxPoint(400,300), wxSize(400, 300))
-{
+AddActivityDialog::AddActivityDialog(wxWindow *parent)
+    : wxDialog(parent, wxID_ANY, "Add activity", wxPoint(400, 300), wxSize(400, 300)) {
     SetBackgroundColour(wxColour(0, 116, 166));
 
-    wxBoxSizer* mainSizer = new wxBoxSizer(wxVERTICAL);
+    wxBoxSizer *mainSizer = new wxBoxSizer(wxVERTICAL);
 
     wxFont textFont(14, wxFONTFAMILY_ROMAN, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_NORMAL, false, "Rockwell");
 
@@ -18,7 +16,7 @@ AddActivityDialog::AddActivityDialog(wxWindow* parent)
     mainSizer->Add(descLabel, 0, wxALL | wxALIGN_CENTER, 5);
 
     descriptionCtrl = new wxTextCtrl(this, wxID_ANY, "", wxDefaultPosition, wxDefaultSize, wxTE_CENTER);
-    descriptionCtrl->SetBackgroundColour(wxColour(196,208,255));
+    descriptionCtrl->SetBackgroundColour(wxColour(196, 208, 255));
     descriptionCtrl->SetFont(textFont);
     mainSizer->Add(descriptionCtrl, 0, wxALL | wxEXPAND | wxALIGN_CENTER, 5);
 
@@ -28,15 +26,15 @@ AddActivityDialog::AddActivityDialog(wxWindow* parent)
     startTimeLabel->SetFont(textFont);
     startTimeLabel->SetForegroundColour(*wxWHITE);
     mainSizer->Add(startTimeLabel, 0, wxALL | wxALIGN_CENTER, 5);
-    wxBoxSizer* startTimeSizer = new wxBoxSizer(wxHORIZONTAL);
+    wxBoxSizer *startTimeSizer = new wxBoxSizer(wxHORIZONTAL);
 
     startHourCtrl = new wxSpinCtrl(this, wxID_ANY, "", wxDefaultPosition, wxSize(60, -1), wxSP_ARROW_KEYS, 0, 23, 0);
     startHourCtrl->SetFont(textFont);
-    startHourCtrl->SetBackgroundColour(wxColour(196,208,255 ));
+    startHourCtrl->SetBackgroundColour(wxColour(196, 208, 255));
 
     startMinuteCtrl = new wxSpinCtrl(this, wxID_ANY, "", wxDefaultPosition, wxSize(60, -1), wxSP_ARROW_KEYS, 0, 59, 0);
     startMinuteCtrl->SetFont(textFont);
-    startMinuteCtrl->SetBackgroundColour(wxColour(196,208,255));
+    startMinuteCtrl->SetBackgroundColour(wxColour(196, 208, 255));
 
     startTimeSizer->Add(startHourCtrl, 0, wxALL, 5);
     startTimeSizer->Add(new wxStaticText(this, wxID_ANY, ":"), 0, wxALIGN_CENTER_VERTICAL);
@@ -49,15 +47,15 @@ AddActivityDialog::AddActivityDialog(wxWindow* parent)
     endTimeLabel->SetFont(textFont);
     endTimeLabel->SetForegroundColour(*wxWHITE);
     mainSizer->Add(endTimeLabel, 0, wxALL | wxALIGN_CENTER, 5);
-    wxBoxSizer* endTimeSizer = new wxBoxSizer(wxHORIZONTAL);
+    wxBoxSizer *endTimeSizer = new wxBoxSizer(wxHORIZONTAL);
 
     endHourCtrl = new wxSpinCtrl(this, wxID_ANY, "", wxDefaultPosition, wxSize(60, -1), wxSP_ARROW_KEYS, 0, 23, 0);
     endHourCtrl->SetFont(textFont);
-    endHourCtrl->SetBackgroundColour(wxColour(196,208,255));
+    endHourCtrl->SetBackgroundColour(wxColour(196, 208, 255));
 
     endMinuteCtrl = new wxSpinCtrl(this, wxID_ANY, "", wxDefaultPosition, wxSize(60, -1), wxSP_ARROW_KEYS, 0, 59, 0);
     endMinuteCtrl->SetFont(textFont);
-    endMinuteCtrl->SetBackgroundColour(wxColour(196,208,255));
+    endMinuteCtrl->SetBackgroundColour(wxColour(196, 208, 255));
 
     endTimeSizer->Add(endHourCtrl, 0, wxALL | wxALIGN_CENTER, 5);
     endTimeSizer->Add(new wxStaticText(this, wxID_ANY, ":"), 0, wxALIGN_CENTER_VERTICAL);
@@ -65,7 +63,7 @@ AddActivityDialog::AddActivityDialog(wxWindow* parent)
     mainSizer->Add(endTimeSizer, 0, wxALIGN_CENTER);
 
     // OK button
-    wxBoxSizer* buttonSizer = new wxBoxSizer(wxHORIZONTAL);
+    wxBoxSizer *buttonSizer = new wxBoxSizer(wxHORIZONTAL);
     okButton = new wxButton(this, wxID_OK, "OK");
     okButton->SetBackgroundColour(wxColour(0, 65, 112));
     okButton->SetForegroundColour(*wxWHITE);
@@ -78,32 +76,26 @@ AddActivityDialog::AddActivityDialog(wxWindow* parent)
     SetSizer(mainSizer);
 }
 
-wxString AddActivityDialog::GetDescription() const
-{
+wxString AddActivityDialog::GetDescription() const {
     return descriptionCtrl->GetValue();
 }
 
-int AddActivityDialog::GetStartHour() const
-{
+int AddActivityDialog::GetStartHour() const {
     return startHourCtrl->GetValue();
 }
 
-int AddActivityDialog::GetStartMinute() const
-{
+int AddActivityDialog::GetStartMinute() const {
     return startMinuteCtrl->GetValue();
 }
 
-int AddActivityDialog::GetEndHour() const
-{
+int AddActivityDialog::GetEndHour() const {
     return endHourCtrl->GetValue();
 }
 
-int AddActivityDialog::GetEndMinute() const
-{
+int AddActivityDialog::GetEndMinute() const {
     return endMinuteCtrl->GetValue();
 }
 
-void AddActivityDialog::OnOK(wxCommandEvent& event)
-{
+void AddActivityDialog::OnOK(wxCommandEvent &event) {
     EndModal(wxID_OK);
 }
