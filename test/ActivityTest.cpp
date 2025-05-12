@@ -9,7 +9,7 @@ class ActivityTestFixture : public ::testing::Test {
 protected:
     wxDateTime startTime;
     wxDateTime endTime;
-    Activity* activity;
+    Activity *activity;
 
     void SetUp() override {
         startTime.Set(1, wxDateTime::Apr, 2025, 10, 0);
@@ -42,7 +42,6 @@ TEST_F(ActivityTestFixture, GetFormattedStartTimeReturnsCorrectValue) {
 TEST_F(ActivityTestFixture, GetFormattedEndTimeReturnsCorrectValue) {
     EXPECT_EQ(activity->getFormattedEndTime(), "13:00");
 }
-
 
 
 // === BASIC TYPE OF TEST === //
