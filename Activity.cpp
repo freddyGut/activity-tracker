@@ -3,7 +3,6 @@
 
 #include "Activity.h"
 
-// controlli tempo start end eccezione
 Activity::Activity(const std::string &description, wxDateTime &startTime, wxDateTime &endTime)
     : description(description), startTime(startTime), endTime(endTime) {
     if (!startTime.IsEarlierThan(endTime)) {
@@ -30,7 +29,7 @@ wxDateTime Activity::getEndTime() const {
 }
 
 
-// === SETTERS === FORMATTA
+// === SETTERS ===
 void Activity::setDescription(const std::string &description) {
     this->description = description;
 }

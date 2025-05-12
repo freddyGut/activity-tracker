@@ -27,7 +27,9 @@ set(SOURCE_FILES main.cpp
         AddActivityDialog.cpp
         AddActivityDialog.h
         SearchActivityDialog.cpp
-        SearchActivityDialog.h)
+        SearchActivityDialog.h
+        SearchActivityController.cpp
+        SearchActivityController.h)
 
 # shared library, to reuse in tests
 add_library(core ${SOURCE_FILES})

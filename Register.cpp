@@ -4,12 +4,17 @@
 #include <wx/datetime.h>
 #include <wx/log.h>
 
+Register::Register() {
+    totalNumberOfActivities = 0;
+}
+
 
 void Register::AddActivity(const wxDateTime day, const Activity &activity) {
     wxDateTime normalizedDate = day;
     normalizedDate.ResetTime(); //resets time to 00:00:00, so the key is the same for all activities in the same date
 
     registerMap[normalizedDate].push_back(activity);
+    totalNumberOfActivities++;
 }
 
 bool Register::RemoveActivity(const wxDateTime &day, const Activity &activity) {
@@ -27,6 +32,7 @@ bool Register::RemoveActivity(const wxDateTime &day, const Activity &activity) {
                                         }),
                          activities.end());
 
+        totalNumberOfActivities--;
         return true;
     }
 
@@ -49,13 +55,8 @@ std::vector<Activity> Register::GetActivitiesPerDate(const wxDateTime &day) cons
 }
 
 
-int Register::GetTotalActivities() const {
-    int total = 0;
-    for (const auto &pair: registerMap) {
-        total += static_cast<int>(pair.second.size());
-    }
-
-    return total;
+int Register::GetTotalNumberOfActivities() const {
+    return totalNumberOfActivities;
 }
 
 

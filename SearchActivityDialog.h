@@ -15,7 +15,9 @@ class SearchActivityDialog : public wxDialog {
 public:
     SearchActivityDialog(wxWindow *parent);
 
-    void ShowActivities(std::vector<Activity> activities);
+    void ClearActivities();
+
+    void AddActivityRow(const wxString &day, const wxString &time);
 
 private:
     wxListCtrl *activityList;

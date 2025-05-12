@@ -1,6 +1,9 @@
 #include "MainController.h"
 
+#include <algorithm>
+
 #include "AddActivityDialog.h"
+#include "SearchActivityController.h"
 #include "SearchActivityDialog.h"
 
 MainController::MainController(MainView *view, Register *model)
@@ -45,11 +48,6 @@ void MainController::OnAddActivity(wxCommandEvent &event) {
         int endHour = dialog->GetEndHour();
         int endMinute = dialog->GetEndMinute();
 
-        //if (startHour > endHour || (startHour == endHour && startMinute >= endMinute)) {
-        //    wxLogError("Start time must be before end time");
-        //    return;
-        //}
-
         // building DateTime object
         wxDateTime date = view->GetCalendar()->GetDate();
         if (!date.IsValid()) {
@@ -63,7 +61,7 @@ void MainController::OnAddActivity(wxCommandEvent &event) {
         try {
             Activity activity(description.ToStdString(), startTime, endTime);
             model->AddActivity(date, activity);
-            UpdateTotalActivitiesText(model->GetTotalActivities());
+            UpdateTotalActivitiesText(model->GetTotalNumberOfActivities());
             UpdateActivityList(date);
         } catch (const std::invalid_argument &e) {
             wxLogError(e.what());
@@ -97,7 +95,7 @@ void MainController::OnRemoveActivity(wxCommandEvent &event) {
     }
 
     UpdateActivityList(date);
-    UpdateTotalActivitiesText(model->GetTotalActivities());
+    UpdateTotalActivitiesText(model->GetTotalNumberOfActivities());
 }
 
 
@@ -109,10 +107,11 @@ void MainController::OnSearchActivity(wxCommandEvent &event) {
         return;
     }
 
-    SearchActivityDialog *searchActivityDialog = new SearchActivityDialog(view);
-    searchActivityDialog->ShowActivities(searchActivities);
-    searchActivityDialog->ShowModal();
-    searchActivityDialog->Destroy();
+    auto *dialog = new SearchActivityDialog(view);
+    SearchActivityController controller(dialog);
+    controller.ShowActivities(searchActivities);
+    dialog->ShowModal();
+    dialog->Destroy();
 }
 
 

@@ -21,19 +21,16 @@ SearchActivityDialog::SearchActivityDialog(wxWindow *parent)
 }
 
 
-void SearchActivityDialog::ShowActivities(std::vector<Activity> activities) {
-    int index = 0;
-    for (const auto &activity: activities) {
-        wxString day = activity.getStartTime().FormatDate();
-        wxString time = activity.getFormattedStartTime() + " - " + activity.getFormattedEndTime();
+void SearchActivityDialog::ClearActivities() {
+    activityList->DeleteAllItems();
+}
 
-        index = activityList->InsertItem(index, day);
-        activityList->SetItem(index, 1, time);
 
-        //alternating colors
-        wxColour rowColor = (index % 2 == 0) ? wxColour(245, 245, 245) : wxColour(230, 230, 255);
-        activityList->SetItemBackgroundColour(index, rowColor);
+void SearchActivityDialog::AddActivityRow(const wxString &day, const wxString &time) {
+    long index = activityList->InsertItem(activityList->GetItemCount(), day);
+    activityList->SetItem(index, 1, time);
 
-        ++index;
-    }
+    //alternating colors
+    wxColour rowColor = (index % 2 == 0) ? wxColour(245, 245, 245) : wxColour(230, 230, 255);
+    activityList->SetItemBackgroundColour(index, rowColor);
 }
